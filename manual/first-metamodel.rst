@@ -11,11 +11,9 @@ When installed, run the database update and your MetaModels installation is done
 
 .. note:: If you know that you don’t need all attributes and/or filter you can install every single package by it’s own.
 
-Your first MetaModel
---------------------
-
 Create MetaModels
-.................
+-----------------
+
 To get started with MetaModels we need at least one MetaModel, jai! We will build a small MetaModel, non translated,
 MetaModel for real estate references.
 
@@ -29,7 +27,7 @@ In our example we need two MetaModels:
 Create reference and category metamodels.
 
 Create attributes
-.................
+-----------------
 
 An (empty) MetaModel is just a container for your data objects. But before you can store data in your MetaModel, you
 need to define some types of data which you like to store.
@@ -106,8 +104,7 @@ blank, we’ll get back later.
 :Attribute type: file
 :column name: picture_highlight
 :Name: Highlight picture
-
-Customize filetree (optional): select a „content“ folder where the reference pictures are stored
+:Customize filetree (optional): select a „content“ folder where the reference pictures are stored
 
 **Gallery**
 
@@ -147,7 +144,7 @@ Choose:
 :Sorting: sorting
 
 Create Rendersettings
-.....................
+---------------------
 
 For now, we have two MetaModel with some attributes and a link between booth. But we didn’t want just to store some
 data, we also like to display them.
@@ -221,7 +218,7 @@ Go to the „render settings“ of „reference“.
 * After adding, activate „name“, „description“, „category“, „picture_highlight“, „picture_gallery“
 
 Input Screens
-.............
+-------------
 
 For now there are two MetaModels with some Attributes and Rendersetting. But how do we get data in our MetaModels?
 With input screens!
@@ -270,7 +267,7 @@ In the grouping & sorting section you need to create at least one object to sort
 For example: "Enable manual sorting" without grouping.
 
 View conditions
-...............
+---------------
 
 View conditions are the easy part in MetaModels. But, you might guess that you also need here at least one to get things
 work.
@@ -292,7 +289,8 @@ Define one view condition with following settings:
 .. info:: Wasn’t it a good Idea to prefix our input screens and render setting? ;-)
 
 We are ready to enter Data
-..........................
+--------------------------
+
 Some time ago, we started with just a MetaModels package and already arrived to create data. Easy, hm?
 
 Continue to the new „Referenz“ entry in your „content“ navigation and add a first item.
