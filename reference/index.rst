@@ -5,4 +5,5 @@ This reference is mainly intended for developers that want to enhance MetaModels
 
 .. toctree::
     :maxdepth: 2
+
     api
