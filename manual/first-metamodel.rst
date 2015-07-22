@@ -1,8 +1,8 @@
 The first MetaModel
--------------------
+===================
 
 Install with composer
-=====================
+---------------------
 
 You’ll need the MetaModels core and some attributes / filter to get MetaModels running. In you composer search
 ``metamodels/core`` an ``metamodels/bundle_all`` to install the core and all bundles and filters. 
@@ -12,10 +12,10 @@ When installed, run the database update and your MetaModels installation is done
 .. note:: If you know that you don’t need all attributes and/or filter you can install every single package by it’s own.
 
 Your first MetaModel
-====================
+--------------------
 
 Create MetaModels
------------------
+.................
 To get started with MetaModels we need at least one MetaModel, jai! We will build a small MetaModel, non translated,
 MetaModel for real estate references.
 
@@ -29,7 +29,7 @@ In our example we need two MetaModels:
 Create reference and category metamodels.
 
 Create attributes
------------------
+.................
 
 An (empty) MetaModel is just a container for your data objects. But before you can store data in your MetaModel, you
 need to define some types of data which you like to store.
@@ -147,7 +147,7 @@ Choose:
 :Sorting: sorting
 
 Create Rendersettings
-=====================
+.....................
 
 For now, we have two MetaModel with some attributes and a link between booth. But we didn’t want just to store some
 data, we also like to display them.
@@ -192,7 +192,7 @@ The filter setting define the rules for the target, your detail page.
 :hide labels: yes
 
 Create a rendersetting (backend)
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Go to the „render settings“ of „reference“.
 
@@ -203,7 +203,7 @@ Go to the „render settings“ of „reference“.
 .. note:: When you (later) add attributes to your MetaModel you need to add them also in your render setting.*
 
 Create a rendersetting (frontend list)
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Go to the „render settings“ of „reference“.
 
@@ -212,7 +212,7 @@ Go to the „render settings“ of „reference“.
 * After adding, activate „name“, „category“, „picture_highlight“
 
 Create a rendersetting (frontend detail)
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Go to the „render settings“ of „reference“.
 
@@ -221,7 +221,7 @@ Go to the „render settings“ of „reference“.
 * After adding, activate „name“, „description“, „category“, „picture_highlight“, „picture_gallery“
 
 Input Screens
-=============
+.............
 
 For now there are two MetaModels with some Attributes and Rendersetting. But how do we get data in our MetaModels?
 With input screens!
@@ -245,7 +245,7 @@ So create a Input Screen with the following settings:
 :Data manipulation permission: We want to allow editing, creating and deleting items - so choose all three.
 
 Select configuration
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Okay. Now we got the empty Input Screen container with a few settings. But to get things working, we need (remember
 the render setting!) some attributes in it.
@@ -253,7 +253,7 @@ the render setting!) some attributes in it.
 Switch to the „settings“ of your currently created Input Screen and choose „add all“.
 
 Define Attribute settings
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Our input screen is ready. But we need tweak the attributes a little bit. For example we always want a name, description
 and Highlight Picture.
@@ -263,14 +263,14 @@ To get this done, we choose in these attribute settings the „mandatory“.
 .. info:: Input Screens are very powerful. Take a coffee and explore the visibility conditions and attribute settings.
 
 Grouping and sorting settings
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the grouping & sorting section you need to create at least one object to sort & maybe group your entries.
 
 For example: "Enable manual sorting" without grouping.
 
 View conditions
-===============
+...............
 
 View conditions are the easy part in MetaModels. But, you might guess that you also need here at least one to get things
 work.
@@ -281,7 +281,7 @@ The view conditions define who could see and use which render setting and input 
           group“ blank.
 
 Define a view condition
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 Define one view condition with following settings:
 
 :member-group: -leave this empty-
@@ -292,11 +292,11 @@ Define one view condition with following settings:
 .. info:: Wasn’t it a good Idea to prefix our input screens and render setting? ;-)
 
 We are ready to enter Data
---------------------------
+..........................
 Some time ago, we started with just a MetaModels package and already arrived to create data. Easy, hm?
 
 Continue to the new „Referenz“ entry in your „content“ navigation and add a first item.
 
 Filter Setting
-==============
+--------------
 (Todo)
