@@ -3,7 +3,7 @@
 Debug templates
 ===============
 
-If you need a custom template - e.g for displaying a frontend list - or if you want to find out which attribute values are sent to the template, you can print those attribute values out to the HTML source code. An easy way to do this is the output of the item array with "print_r".
+If you need a custom template - e.g for displaying a frontend list - or if you want to find out which attribute values are sent to the template, you can print those attribute values out to the HTML source code. An easy way to do this is the output of the item array with "print_r" .
 
 The default template is "metamodel_prerendered" or respectively the template, which was selected in the output render settings.
 
