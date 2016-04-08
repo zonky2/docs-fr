@@ -1,4 +1,4 @@
-.. _rst_cookbook_debug_templates:
+﻿.. _rst_cookbook_debug_templates:
 
 Debug templates
 ===============
