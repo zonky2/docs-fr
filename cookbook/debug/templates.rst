@@ -9,7 +9,7 @@ The default template is "metamodel_prerendered" or respectively the template, wh
 
 In case that there is no custom template in use yet, you will have to create a copy of "metamodel_prerendered" within the Contao folder named "Templates".
 
-The following code is added to the respective template:
+The following code is added to the respective template: 
 
 .. code-block:: php
    :linenos:
