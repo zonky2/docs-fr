@@ -1,4 +1,4 @@
-﻿.. _rst_cookbook_debug_templates:
+.. _rst_cookbook_debug_templates:
 
 Debug templates
 ===============
@@ -9,7 +9,7 @@ The default template is "metamodel_prerendered" or respectively the template, wh
 
 In case that there is no custom template in use yet, you will have to create a copy of "metamodel_prerendered" within the Contao folder named "Templates".
 
-The following code is added to the respective template: 
+The following code is added to the respective template:
 
 .. code-block:: php
    :linenos:
@@ -19,7 +19,7 @@ The following code is added to the respective template:
    echo "<pre>\n";
    print_r($this->items->parseAll($this->getFormat(), $this->view));
    echo "</pre>\n";
-   echo "\n DEBUG ENDE -->";
+   echo "\n DEBUG END -->";
    ?>
 
 Subsequently the template should start with the code as follows:
@@ -33,7 +33,7 @@ Subsequently the template should start with the code as follows:
    echo "<pre>\n";
    print_r($this->items->parseAll($this->getFormat(), $this->view));
    echo "</pre>\n";
-   echo "\n DEBUG ENDE -->";
+   echo "\n DEBUG END -->";
    ?>
    
    <?php $strRendersettings = isset($this->settings)? 'settings' : 'view'; ?>
@@ -58,10 +58,10 @@ Browser rendering can become very slow in case that the output is very extensive
    <?php 
    echo "<!-- DEBUG START \n";
    echo "<pre>\n";
-   // nur 0.-Knoten
+   // only first node
    print_r($this->items->parseAll($this->getFormat(), $this->view)[0]);
    echo "</pre>\n";
-   echo "\n DEBUG ENDE -->";
+   echo "\n DEBUG END -->";
    ?>
 
 You can remove the output by commenting out the output block, by deleting it or by switching to another template. 
