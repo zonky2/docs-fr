@@ -10,7 +10,7 @@ You will need a Contao-LTS-version to be able to install MetaModels
 Installation via Composer
 -------------------------
 
-MetaModels and all its dependencies can be installed with the Composer package manager <https://c-c-a.org/ueber-composer>`_
+MetaModels and all its dependencies can be installed with the `Composer package manager <https://c-c-a.org/ueber-composer>`_
 in the Contao backend.
 
 If your Contao installation is already using the new Composer package manager, you can easily install MetaModels by selecting, respectively typing in the package name into the search field, as follows:
@@ -30,7 +30,7 @@ Alternatively to the installation via Composer, you can install MetaModels via F
 unzip it and upload it via FTP to your server. Most of the folders have to be saved into the folder `/system/module` - only two PHP files which are supporting the Ajax functions have to be saved into the Contao root directory.
 
 Afterwards you will have to update the database in the "extension manager".
-If the following error message appears  ``Fatal error: Class 'MetaModels\Helper\UpgradeHandler' ....!metamodels-tng-branch/config/runonce_0.php`` you should purge the internal cache. This option can be found in the menu item "Maintenance" of the Conto backend.
+If the following error message appears  ``Fatal error: Class 'MetaModels\Helper\UpgradeHandler' ....!metamodels-tng-branch/config/runonce_0.php`` you should purge the internal cache. This option can be found in the menu item "Maintenance" of the Contao backend.
 
 
 Testing of special packages via Composer
@@ -73,9 +73,9 @@ The following procedure has shown itself to be the most efficient:
 * download the new nightly build files, unzip and upload them (via FTP)
 * update the database via /contao/install.php
 
-You can find the most current information in the forum <https://community.contao.org/de/showthread.php?56725-MetaModels-aktualisieren-%28ohne-Composer%29>`_
+You can find the most current information in the `forum <https://community.contao.org/de/showthread.php?56725-MetaModels-aktualisieren-%28ohne-Composer%29>`_
 
-switch MetaModels from "Nightly build" to "Composer"
+Switch MetaModels from "Nightly build" to "Composer"
 -----------------------------------------------------
 
 The procedure is similar to "Update MetaModels". By switching to Composer you should consider that Composer is a memory intensive application. Based on experience, you should have at least 100MB. The exact required memory size is dependent on other installed packages and also on the server configuration of your provider.
