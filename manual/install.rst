@@ -26,7 +26,7 @@ You can find an overview of your already installed packages in the display of th
 Installaton via Nightly build
 ------------------------------
 
-Alternatively to the installation via Composer, you can install MetaModels via FTP. To do this, you will have to downlod the current version of MetaModels from the `project website http://now.metamodel.me/ <http://now.metamodel.me/>`_
+Alternatively to the installation via Composer, you can install MetaModels via FTP. To do this, you will have to download the current version of MetaModels from the `project website http://now.metamodel.me/ <http://now.metamodel.me/>`_
 unzip it and upload it via FTP to your server. Most of the folders have to be saved into the folder `/system/module` - only two PHP files which are supporting the Ajax functions have to be saved into the Contao root directory.
 
 Afterwards you will have to update the database in the "extension manager".
