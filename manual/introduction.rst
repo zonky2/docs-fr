@@ -53,7 +53,7 @@ Resources
 
 * `MetaModels project website <https://now.metamodel.me>`_
 * `MetaModels on Github <https://github.com/MetaModels>`_
-* `MetaModels manual on Github <https://github.com/MetaModels/docs-en>`_
+* `MetaModels manual on Github <https://github.com/MetaModels/docs>`_
 * `MetaModels Contao Wiki <http://en.contaowiki.org/MetaModels>`_
 * `MetaModels Contao community subforum <https://community.contao.org/en/forumdisplay.php?184-MetaModels>`_
 * `MetaModels IRC Channel on freenode #contao.mm <irc://chat.freenode.net/#contao.mm>`_
