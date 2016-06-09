@@ -43,8 +43,8 @@ Depending on the attribute type there will be new entry options, respectively sp
   with the attribute "Select" you can create a 1:n-relation to another MetaModel; the MetaModel table, the attribute etc. can be set within the options
 * **Text table**: Input of values as a table |br| 
   the attribute "Text table" defines a number of columns including the column designation and the column width; in the input mask you can generate any number of lines, e.g. to store several URLs or phone numbers 
-* **Multiple selection**: Relation (m:n) to another MetaModel |br|
-  the attribute "Multiple selection"  creates a m:n relation to another MetaModel; the MetaModel table, the attribute etc. is set within the options; 
+* **Tags**: Relation (m:n) to another MetaModel |br|
+  the attribute "Tags"  creates a m:n relation to another MetaModel; the MetaModel table, the attribute etc. is set within the options; 
   the resolution of the relation takes place within a particular table of MetaModels, so that no column will be created in the MetaModel table for the attribute
 * **Text**: simple text field
 * **Date**: Date, respectively date and time |br|
@@ -66,7 +66,7 @@ If the option "Translation" is activated in the MetaModel, the following attribu
 
 These attributes differ from their monolingual attributes only regarding the multilingual informations for name and description. Special tables of the extension will be used for the translated attributes, not the table which has been generated when creating the MetaModel.
 
-Note that you usually *don't* need to choose between the options "Translated select" and "Translated tags" regarding relations per "Select" or "Multiple select"  between two MetaModel with translations.
+Note that you usually *don't* need to choose between the options "Translated select" and "Translated tags" regarding relations per "Select" or "Tags"  between two MetaModel with translations.
 
 MetaModels will recognize and switch between languages automatically. The two "translated variants" are mainly determined to bind tables which do not belong to MetaModels and have independent fields for the language variant.
 
@@ -74,7 +74,7 @@ More attributes can be provided by additional extensions of MetaModels besides t
 
 The sequence of creating attributes is freely definable. Only for attributes with relations to other attributes, e.g. an "alias" or "Combined values", a subsequent creation makes sense.
 
-Regarding the attributes "Select" and "Multiple selection" the referencing MetaModel have to be created first.
+Regarding the attributes "Select" and "Tags" the referencing MetaModel have to be created first.
 
 Options
 -------
