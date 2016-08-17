@@ -42,7 +42,8 @@ Options of input screens
 
 Options of an input field
 --------------------------
-(You will find the following options by clicking on the "|img_dca_setting| Edit the settings of input screen ID x" and then on "|img_edit| Edit setting ID x" of the desired attribute) |br|
+You will find the following options by clicking on the "|img_dca_setting| Edit the settings of input screen ID x" and then on "|img_edit| Edit setting ID x" of the desired attribute.
+
 * **Type**: |br|
   Legend: Dividers for the input panels ("Green lines") |br|
   Attribute: Display of the attribute options |br|
