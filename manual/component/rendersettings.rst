@@ -1,6 +1,6 @@
 .. _component_rendersettings:
 
-|img_rendersettings_32| Render settngs
+|img_rendersettings_32| Render settings
 ============================================
 
 .. note:: How to create list views for back end and front end; how to add attributes and activate them
