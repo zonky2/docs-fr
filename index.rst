@@ -1,27 +1,27 @@
-Welcome to MetaModels!
-======================
+Bienvenue à MetaModels !
+========================
 
-This is the official documentation of *MetaModels*, an extension for the `Contao Content Management System`_.
+Ceci est la documentation officielle de *MetaModels*, une extension pour le `CMS Contao`_.
 
 .. _Contao Content Management System: https://contao.org
 
-This documentation is split into three sections:
+Cette documentation est divisée en 3 sections :
 
-    In the :ref:`manual` you find general documentation about MetaModels.
+    Dans :ref:`manuel` vous trouverez la documentation générale sur MetaModels.
 
-    In the :ref:`cookbook` you find specific solutions for specific needs.
+    Dans :ref:`cookbook` vous trouverez des solutions spécifiques à des besoins spécifiques.
 
-    In the :ref:`reference` you find reference information like a list of events.
+    Dans :ref:`références` vous trouverez des informations de référence comme une liste des événements.
 
 
-If you want to contribute, too, please click the „Edit on GitHub“ link in the upper right corner or visit our
-`GitHub project page`_.
+Si vous souhaitez également contribuer, merci de cliquer sur le lien „Edit on GitHub“ dans le coin supérieur droit ou de visiter la
+`page du projet sur GitHub`_.
 
 .. _GitHub project page: https://github.com/MetaModels/docs
 
 .. _manual:
 
-Manual
+Manuel
 ------
 
 .. toctree::
@@ -45,8 +45,8 @@ Cookbook
 
 .. _reference:
 
-Reference
----------
+Références
+----------
 
 .. toctree::
     :glob:

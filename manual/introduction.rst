@@ -1,59 +1,58 @@
-Introduction to MetaModels
-==========================
+Introduction à MetaModels
+=========================
 
-What are MetaModels?
---------------------
+Qu'est-ce que MetaModels ?
+--------------------------
 
-MetaModels is an extension for the Contao CMS. This extension enables you to input a large variety of structured data and display it on your website following different criteria such as list and detail views, filtering, sorting, pagination, multilingualism and many more..
+MetaModels est une extension pour le système de gestion de contenu Contao. Cette extension vous permet d'ajouter une différents types de données structurées et de les afficher sur votre site en utilisant les vues en liste et détail, le filtrage, le tri, la pagination, le multilinguisme et d'autres choses encore…
 
-"Structured data" means content, which is usually stored in a database scheme with different tables and relations.
-MetaModels supports different types of field types (attributes) as for example text, selects, check boxes, radio buttons, integers/decimal, yes/no fields, file selection etc.
+"Données structurées" signifie du contenu habituellement stocké dans une base de données avec différentes tables et relations. MetaModels propose différents types de champs (appelés Attributs) comme, entre autres, le texte, les listes de sélection, les boites à cocher, les boutons radio, les nombres entiers et décimaux, les booléens oui/non, les gestionnaires de fichiers etc…
 
-Possible applications for such data content are in the fields of product catalogues, events, menues, adress or employee lists, houses and rental properties, picture galleries or multilingual text/image content.
+Les champs d'applications possibles sont les catalogues de produits, les événements, les menus, les listes d'adresses ou d'employés, la gestion de maisons ou de locations, les galeries d'images ou du contenu multilangues texte et image.
 
-With MetaModels, the data models can be created completely in the Contao backend. There is no need for you to code, as for a specific extension.
-Both the creation of the input masks for the backend as well as the output for the frontend with optional filters belongs to the creation of a MetaModel.
+MetaModels permet de créer ses modèles de données directement dans le backend de Contao. Sans avoir besoin de coder contrairement à une extension spécifique. La création des masques de saisie pour le backend comme des sorties pour le frontend avec filtres optionnels sont partie itégrante de la création d'un MetaModel.
 
-The MetaModels extension features a high flexibility for data input and output and thereby covers a lot of specific needs.
-You can find more details in  :ref:`rst_features`.
-Also have a look at some `MetaModels show cases <https://now.metamodel.me/en/showcase>`_ or check the `Contao forum <https://community.contao.org/de/showthread.php?40208-Stellt-eure-MetaModel-Websites-vor/>`_ for further show cases introduced in the german forum.
+L'extension MetaModels permet une grande flexibilité dans la saisie et l'affichage des données et peut répondre ainsi à de nombreux besoins.
+Vous pouvez trouver plus de détails dans :ref:`rst_features`.
+Vous pouvez aussi jeter un œil aux `MetaModels show cases <https://now.metamodel.me/en/showcase>`_ ou consulter le `forum Contao <https://community.contao.org/de/showthread.php?40208-Stellt-eure-MetaModel-Websites-vor/>`_ pour différents exemples présentés sur le forum allemand.
 
 
-History of MetaModels
----------------------
+Histoire de MetaModels
+----------------------
 
-Metamodels started out as the next generation of the famous Catalog extension.
+MetaModels a été initialement créé comme la nouvelle génération de la célèbre extension Catalog.
 
-Over time 'Catalog' developed into a complex extension and offered many possibilities combined with Contao. But unfortunately it became more and more difficult to maintain the code and to implement new functions.
+Au fil du temps, 'Catalog' est devenue une extension complexe offrant de nombreuses possbilités à Contao. Mais il devenait malheureusement de plus en plus difficile de la maintenir et d'ajouter de nouvelles fonctions.
 
-From the experiences we gained with the development of Catalog 1 and Catalog 2, it became clear to us, that we needed to start from scratch.
+L'expérience acquise à développer Catalog 1 et Catalog 2 nous a convaincus qu'il nous fallait repartir de zéro.
 
-That's why we developed "MetaModels": a totally new extension influenced by many modern programming paradigms. Our goal was to develop an extension with a flexible and extensible code base.
+C'est pourquoi nous avons développé "MetaModels" : une extension entièrement nouvelle intégrant des logiques de programmation modernes. Notre but était de développer un extension avec un code de base flexible et exensible.
 
-The current Metamodels version 2.0 is the result of many hours of discussion about what is "the best solution" and hard programming work.
+La version actuelle MetaModels 2.0 est le résultat de nombreuses heures de discussion sur "quelle est la meilleure solution" et un gros travail de programmation.
 
-MetaModels in comparison with other tools
------------------------------------------
 
-MetaModels works well with the division of labour between administrator and editor which means: the administrator or developer creates one or multiple MetaModels with input masks and output functions and the editor(s) can add the content as they are already used to from other areas of the Contao backend. 
+MetaModels comparé à d'autres outils.
+-------------------------------------
 
-The input masks allow you to accurately specify which data has to be entered (or can be entered) and how. The extensions "[dma_elementgenerator]" or "[rocksolid-custom-elements]" also provide similar functions. The difference is that MetaModels will allow you to even display complex data structures and additionally provides you with various functions for output and filtering.
+MetaModels répartit le travail entre administrateur et éditeur c'est à dire : l'administrateur ou le développeur crée le ou les MetaModels avec masques de saisie et options de sortie ; le ou les éditeur(s) ajoute les contenus comme on le fait d'habitude dans les autres parties du backend de Contao.
 
-Before starting a new project you might wonder whether it is better to develop your own extension instead of using MetaModels. But there is no general answer to this question, because both solutions will enable you to solve various problems. The following aspects might help you to make your decision:
+Les masques de saisie permettent de définir précisément quelle donnée peut (ou doit) être entrée et de quelle manière. Les extensions "[dma_elementgenerator]" ou "[rocksolid-custom-elements]" offrent des fonctions smilaires. La différence est que MetaModels vous permet également d'afficher des ensembles de données complexes et propose différentes options de sortie et de filtrage.
 
-** Pro developing own extension: ** Is it required to develop a product which can be marketed, as for example a commercial extension which can be made available to other Contao users at the push of a button? Then you should consider developing your own specific extension. 
-The basic requirements to do so are appropriate skills in PHP programming and knowledge of the Contao API.
+Avant de débuter un nouveau projet, vous pouvez vous demander s'il vaut mieux développer votre propre extension ou utiliser MetaModels. IL n'y a pas de réponse générale à cette question parce que les deux solutions permettent de résoudre différents problèmes. Ces différents aspects peuvent vous aider à prendre votre décision :
 
-** Pro MetaModels: **
-In case that you want to implement a very individual solution which can be quickly customised in the Contao backend, MetaModels is certainly a good choice. If you also need specific functions e.g. supporting multilingualism, MetaModels can play fully on its strengths. MetaModels supports users to develop a solution without programming. 
-But it should be noted that only with some basic knowledge in PHP, HTML, and SQL databases, you will be able to make fully use of the opportunities provided by MetaModels. 
+** Pour développer votre propre extension : **
+Le produit à développer doit pouvoir être commercialisé, par exemple une extension commerciale qui devra être facilement mise à disposition des autres utilisateurs de Contao ?
+Envisagez de développer votre propre extension. Vous devrez basiquement avoir des compétences en programmation PHP et connaitre de l'API Contao.
 
-Resources
+** Pour MetaModels : **
+MetaModels est certainement un bon choix lorsque vous souhaitez créer une solution spécifique facilement personnalisable dans le backend de Contao. MetaModels a également des atouts à faire valoir  s'il vous faut des fonctions spécifiques comme le multilinguisme. MetaModels permet à l'utilisateur de développer des solution sans programmation. Cependant, des connaissances basiques en PHP, HTML et les bases SQL vous permettront d'utiliser à plein les possibilités offertes par MetaModels.
+
+Ressources
 ----------
 
-* `MetaModels project website <https://now.metamodel.me>`_
-* `MetaModels on Github <https://github.com/MetaModels>`_
-* `MetaModels manual on Github <https://github.com/MetaModels/docs>`_
-* `MetaModels Contao Wiki <http://en.contaowiki.org/MetaModels>`_
-* `MetaModels Contao community subforum <https://community.contao.org/en/forumdisplay.php?184-MetaModels>`_
-* `MetaModels IRC Channel on freenode #contao.mm <irc://chat.freenode.net/#contao.mm>`_
+* `Site du projet MetaModels <https://now.metamodel.me>`_
+* `MetaModels chez Github <https://github.com/MetaModels>`_
+* `Manuel MetaModels chez Github <https://github.com/MetaModels/docs>`_
+* `MetaModels dans le wiki de Contao <http://en.contaowiki.org/MetaModels>`_
+* `Sous-forum MetaModels de la communauté Contao <https://community.contao.org/en/forumdisplay.php?184-MetaModels>`_
+* `Canal IRC de MetaModels sur freenode #contao.mm <irc://chat.freenode.net/#contao.mm>`_
