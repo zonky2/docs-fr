@@ -1,69 +1,148 @@
 .. _rst_cookbook_debug_templates:
 
-Debug templates
-===============
+Déboguer les templates
+=======================
 
-If you need a custom template - e.g for displaying a frontend list - or if you want to find out which attribute values are sent to the template, you can print those attribute values out to the HTML source code. An easy way to do this is the output of the item array with "print_r" .
+Si l'on a besoin, par ex. pour l'affichage d'une liste en frontend,
+d'un template personnalisé, ou si l'on souhaite savoir, pour un
+template existant, quels attributs sont transmis au template, on peut
+les afficher très confortablement avec la barre de débogage de
+Symfony.
 
-The default template is "metamodel_prerendered" or respectively the template, which was selected in the output render settings.
+Le template par défaut est « metamodel_prerendered », ou respectivement
+le template sélectionné dans le réglage de rendu pour la sortie.
 
-In case that there is no custom template in use yet, you will have to create a copy of "metamodel_prerendered" within the Contao folder named "Templates".
+Si aucun template personnalisé n'est encore utilisé, il faut créer une
+copie de « metamodel_prerendered » dans le dossier Contao « /templates ».
 
-The following code is added to the respective template:
+Le template concerné est complété au début par les lignes suivantes :
 
 .. code-block:: php
    :linenos:
 
-   <?php 
+   <?php
+   // Debug items.
+   if (\Contao\System::getContainer()->get('kernel')->isDebug()) {
+       dump($this->data);
+   }
+   ?>
+
+Ensuite, il faut consulter la page en frontend en mode débogage. Pour
+cela, activer le mode débogage dans l'en-tête du backend, ou, pour un
+mode débogage permanent, créer dans le dossier du projet un fichier
+`.env` ou `.env.local` avec le contenu `APP_ENV=dev` (la page ne
+devrait alors pas être accessible publiquement).
+
+On peut ensuite examiner le tableau dans la barre de débogage via
+l'icône « réticule » :
+
+|img_symfony-toolbar|
+
+Grâce à la vérification « isDebug() », le `dump` ne perturbe pas
+l'appel normal de la page.
+
+Depuis MM 2.2, il existe un template dédié `metamodel_prerendered_debug.html5`,
+que l'on peut sélectionner dans les réglages de rendu pour la sortie
+FE - avec ce template, aucune valeur de la liste MM n'est encore
+affichée dans un premier temps.
+
+Pour reprendre facilement les données du tableau dans un template FE,
+il existe l'aide :ref:`rst_cookbook_frontend_array-helper`, qui génère une
+sortie dans le code source prête pour un `copier-coller`.
+
+On peut également restreindre ou rediriger davantage la sortie de
+débogage - par ex.
+
+- limiter la sortie aux seules requêtes HTML :
+
+.. code-block:: php
+   :linenos:
+
+   <?php
+   // Debug – pas pour les réponses API/JSON, sinon dump() casse la sortie.
+   $request = \Contao\System::getContainer()->get('request_stack')->getCurrentRequest();
+   if (
+       \Contao\System::getContainer()->get('kernel')->isDebug()
+       && 'html' === $request?->getRequestFormat()
+   ) {
+       dump($this->data);
+   }
+   ?>
+
+- exclure spécifiquement la sortie pour un chemin donné :
+
+.. code-block:: php
+   :linenos:
+
+   <?php
+   // Debug – pas pour les réponses API/JSON, sinon dump() casse la sortie.
+   $request = \Contao\System::getContainer()->get('request_stack')->getCurrentRequest();
+   if (
+       \Contao\System::getContainer()->get('kernel')->isDebug()
+       && !str_starts_with($request?->getPathInfo() ?? '', '/cowegis/api')
+   ) {
+       dump($this->data);
+   }
+   ?>
+
+- rediriger complètement vers le répertoire de logs de Contao - généralement ``var/logs/`` - via une entrée dans le config.yaml :
+
+.. code-block:: yaml
+   :linenos:
+
+   when@dev:
+      debug:
+          dump_destination: "%kernel.logs_dir%/dump.log"
+
+
+Débogage dans MM 2.0
+---------------------
+
+Dans Contao 3, la barre d'outils Symfony n'est pas disponible et il
+faut passer par un `print_r`.
+
+Le template concerné est complété par quelques lignes de sortie et
+devrait ensuite commencer comme suit :
+
+.. code-block:: php
+   :linenos:
+
+   <?php
    echo "<!-- DEBUG START \n";
    echo "<pre>\n";
    print_r($this->items->parseAll($this->getFormat(), $this->view));
    echo "</pre>\n";
-   echo "\n DEBUG END -->";
+   echo "\n DEBUG ENDE -->";
    ?>
 
-Subsequently the template should start with the code as follows:
+Si la page correspondante avec le listing est appelée dans le
+navigateur, la sortie de débogage devrait se trouver dans le code
+source.
 
- 
-.. code-block:: php
-   :linenos:
-
-   <?php 
-   echo "<!-- DEBUG START \n";
-   echo "<pre>\n";
-   print_r($this->items->parseAll($this->getFormat(), $this->view));
-   echo "</pre>\n";
-   echo "\n DEBUG END -->";
-   ?>
-   
-   <?php $strRendersettings = isset($this->settings)? 'settings' : 'view'; ?>
-   <?php if (count($this->data)): ?>
-    
-   <div class="layout_full">
-    
-   <?php foreach ($this->data as $arrItem): ?>
-   <div class="item <?php echo $arrItem['class']; ?>">
-    
-   <?php foreach ($arrItem['attributes'] as $field => $strName): ?>
-   //...
-
-If the website with this listing is called in a browser, you should find the debug output in the source code.
-
-Browser rendering can become very slow in case that the output is very extensive. It might then be helpful to output only one item node.
-
+Si la sortie est très volumineuse, l'affichage dans le navigateur peut
+devenir très lent - on peut y remédier par ex. en n'affichant qu'un seul
+nœud d'item :
 
 .. code-block:: php
    :linenos:
 
-   <?php 
+   <?php
    echo "<!-- DEBUG START \n";
    echo "<pre>\n";
-   // only first node
+   // nur 0.-Knoten
    print_r($this->items->parseAll($this->getFormat(), $this->view)[0]);
    echo "</pre>\n";
-   echo "\n DEBUG END -->";
+   echo "\n DEBUG ENDE -->";
    ?>
 
-You can remove the output by commenting out the output block, by deleting it or by switching to another template. 
+Si, dans les réglages de rendu, la redirection et le filtre pour la
+page de détail sont configurés, la sortie du tableau dans le code
+source devient très volumineuse et entraîne souvent une erreur
+« Allowed memory size... ». On peut y remédier par ex. en désactivant
+temporairement le filtre pour la redirection.
+
+On peut à nouveau supprimer la sortie en commentant le bloc de sortie,
+en le supprimant ou en changeant de template.
 
 
+.. |img_symfony-toolbar| image:: /_img/screenshots/cookbook/debug/symfony-toolbar.jpg

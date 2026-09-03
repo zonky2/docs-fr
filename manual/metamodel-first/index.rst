@@ -1,33 +1,42 @@
 .. _mm_first_index:
 
-The first MetaModel
-===================
+Le premier MetaModel
+=====================
 
-.. warning:: Under construction!
+La création du premier MetaModel a pour but de permettre une prise en main facile
+de la mise en œuvre. La tâche pour cette première réalisation est une simple liste
+d'employés avec seulement quelques informations. La liste doit pouvoir être remplie
+dans le backend et peut être affichée dans le frontend sous forme de tableau.
+Certains aspects comme les tris, les filtrages etc. ont volontairement été laissés
+de côté.
 
-We want you to have an easy start with MetaModels. To better understand the structure, let's begin with a simple employee list with only very few informations.
-Our list shall be filled in the back end and it can be displayed in the front end as a table. To keep it simple in the beginning, we will skip any filtering and sorting options.
+La mise en œuvre s'appuie sur les :ref:`component_index` - vous y trouverez également
+plus d'indications sur les templates utilisés et les relations possibles. Si vous
+n'êtes pas sûr de la meilleure façon de démarrer, consultez
+:ref:`l'article sur le déroulement du travail <component_workflow>`.
 
-The implementation will be guided by the :ref:`component_index`.
+Pour avoir une meilleure vue d'ensemble de ce qui se trouve où, il existe le
+:download:`« plan MM » </_download/MM_Lageplan_e-spin-Berlin.pdf>` à télécharger.
 
-**The task:**
+**Énoncé de la tâche :**
 
-* Creation of an employee list which can be maintained in the back end
-* Storage of the following values: Last name, first name, email, department
-* An additional field to publish a data record
-* Output the list as a table in the front end
+* Création d'une liste d'employés modifiable dans le backend
+* Enregistrement des valeurs : nom, prénom, e-mail, département
+* Champ supplémentaire pour la publication d'un enregistrement
+* Sortie de la liste sous forme de tableau dans le frontend
 
-**Requirements:**
+**Prérequis :**
 
-* Actual version of Contao (preferably the LTS version)
-* Actual MetaModels - see :ref:`manual_install`
-* Familiarity with Contao
-* Understanding of :ref:`component_index`
+* Une version actuelle de Contao (LTS) - voir :ref:`manual_install`
+* Une version actuelle de MetaModels compatible avec la version de Contao - voir
+  :ref:`manual_install` et :ref:`rst_cookbook_checklists_mm-start`
+* Une bonne maîtrise de Contao
+* Compréhension des :ref:`component_index`
 
 .. toctree::
     :hidden:
     :maxdepth: 1
-    
+
     new-mm
     attribute
     rendersettings

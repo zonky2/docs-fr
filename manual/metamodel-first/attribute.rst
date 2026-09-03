@@ -1,61 +1,80 @@
 .. _mm_first_attribute:
 
-|img_fields_32| Attributes
-==========================
+|svg_fields_32| |img_fields_32| Attributs
+==========================================
 
-After the table "mm_employeelist" was created in the database, we also have to create the fields/table columns to store the data, which are called the "attributes". We can do this with the component "|img_fields| attributes"
+Une fois la table « mm_listeemployes » créée dans la base de données, il faut y
+créer les champs, respectivement les colonnes de table, permettant de stocker
+les données - c'est-à-dire les attributs. Cette étape se déroule via le composant
+du même nom « |svg_fields_22| |img_fields| Attributs ».
 
-According to our task, we will need to create the following fields:
+D'après l'énoncé de la tâche, les champs suivants sont nécessaires :
 
 +-----------------+----------------+----------+
-| **Name** | **Column name** | **Attr. type** |
+| **Désignation** | **Attr.-Name** | **Type** |
 +-----------------+----------------+----------+
-| Name            | name           | Text     |
+| Nom             | name           | Text     |
 +-----------------+----------------+----------+
-| First name      | firstname      | Text     |
+| Prénom          | vorname        | Text     |
 +-----------------+----------------+----------+
-| Email           | email          | Text     |
+| E-mail          | email          | Text     |
 +-----------------+----------------+----------+
-| Department      | department     | Text     |
+| Département     | abteilung      | Text     |
 +-----------------+----------------+----------+
-| Published       | published      | Checkbox |
+| Publié          | published      | Checkbox |
 +-----------------+----------------+----------+
 
+Dans un premier temps, on passe dans le MetaModel « Liste des employés » au composant
+« Attributs » en cliquant sur l'icône |svg_fields_22| |img_fields|. Ensuite, le premier
+attribut peut être créé via « |img_new| Nouvel attribut ». Le clic sur
+« |img_new| Nouvel attribut » n'ouvre pas immédiatement le masque de saisie, mais fait
+apparaître une « |img_pasteafter| icône de pochette » sur laquelle il faut cliquer
+(voir la copie d'écran).
 
-In the MetaModel "Employee list" go to the component "attributes" wth a click on the icon |img_fields|. After that you can create the first attribute with a click on "|img_new| New attribute". The input screen for the new attribute will not open immediately, but a "|img_pasteafter| Clip folder icon" on which you have to click (see screenshot below).
+|img_attribute_01|
 
-|img_attribute_01_en|
+Le clic sur l'« |img_pasteafter| icône de pochette » ouvre le masque de saisie pour
+l'attribut. On y choisit d'abord le type d'attribut « Text » dans la liste de sélection
+et, après actualisation du masque de saisie, les champs nécessaires sont disponibles
+pour la saisie. Ceux-ci sont remplis pour le premier attribut « Nom » comme indiqué
+dans la copie d'écran.
 
-The input screen for the attribute opens with a click onto the "|img_pasteafter| Clip folder icon". Here, first choose the attribute type "Text" from the dropdown menu. The input screen will then refresh and show further options according to your selection. For the first attribute "Name" you will have to fill the fields in as shown below in the screenshot.
+|img_attribute_02|
 
-|img_attribute_02_en|
+Avec « Enregistrer et fermer », l'attribut « Nom » est créé, c'est-à-dire que la
+colonne « name » est générée dans la table de la base de données, puis on est
+redirigé vers la vue d'ensemble des attributs. Ces étapes de création d'un attribut
+sont ensuite répétées pour Prénom, E-mail et Département.
 
-By clicking "Save and close" your first attribute "Name" is created - which means that the column "name" was generated in the database - then you can see the new attribute in the attribute overview.
-This attribute creation steps have to be repeated now for the other fields "First name", "Email" and "Department".
+Pour l'attribut « Publié », un nouvel attribut est également créé, mais en choisissant
+le type d'attribut « Case à cocher (Checkbox) ». Pour cet attribut, l'option
+« Publication » est activée dans les « réglages avancés » (voir la copie d'écran).
 
-Note that for the attribute "Published" we will choose "Checkbox" as attribute type. For this attribute we will also activate the option "Publishing checkbox" in the "Advanced settings" (see screenshot below).
+|img_attribute_03|
 
-|img_attribute_03_en|
+La liste des attributs créés devrait maintenant s'afficher comme indiqué dans la
+copie d'écran.
 
-Now you should be able to see the list of created attributes as shown in the screenshot below.
-
-|img_attribute_04_en|
+|img_attribute_04|
 
 
 .. |img_fields_32| image:: /_img/icons/fields_32.png
 .. |img_fields| image:: /_img/icons/fields.png
+.. |svg_fields_22| image:: /_img/icons_svg/fields.svg
+   :width: 22px
+.. |svg_fields_32| image:: /_img/icons_svg/fields.svg
+   :width: 32px
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_pasteafter| image:: /_img/icons/pasteafter.gif
 
-.. |img_attribute_01_en| image:: /_img/screenshots/metamodel_first/img_attribute_01_en.png
-.. |img_attribute_02_en| image:: /_img/screenshots/metamodel_first/img_attribute_02_en.png
-.. |img_attribute_03_en| image:: /_img/screenshots/metamodel_first/img_attribute_02_en.png
-.. |img_attribute_04_en| image:: /_img/screenshots/metamodel_first/img_attribute_04_en.png
+.. |img_attribute_01| image:: /_img/screenshots/metamodel_first/attribute_01.png
+.. |img_attribute_02| image:: /_img/screenshots/metamodel_first/attribute_02.png
+.. |img_attribute_03| image:: /_img/screenshots/metamodel_first/attribute_03.png
+.. |img_attribute_04| image:: /_img/screenshots/metamodel_first/attribute_04.png
 
 .. |br| raw:: html
 
    <br />
-   
-.. |nbsp| unicode:: 0xA0 
-   :trim:
 
+.. |nbsp| unicode:: 0xA0
+   :trim:

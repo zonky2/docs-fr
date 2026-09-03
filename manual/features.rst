@@ -1,4 +1,4 @@
-﻿.. _rst_features:
+.. _rst_features:
 
 Aperçu des fonctions
 ====================
@@ -6,60 +6,105 @@ Aperçu des fonctions
 Modèles de données
 ------------------
 
-Metamodels vous permet de concevoir des modèles de données facilement depuis le backend de Contao sans (presque) aucune restriction et sans compétence en programmation.
+MetaModels vous permet de concevoir des modèles de données facilement et de manière (presque) illimitée depuis le
+backend de Contao, sans aucune compétence en programmation. Pour construire des modèles de données complexes,
+différentes :ref:`relations <component_relations>` sont disponibles afin de stocker les données dans des tables
+séparées et de les relier entre elles - voir la `normalisation <https://de.wikipedia.org/wiki/Normalisierung_(Datenbank)>`_.
 
-Différents types de données sont disponibles pour les champs (attributs) comme, par exemple, texte, image, nombres, date et fichiers.
-Si vous atteignez une limite et que le type de donnée souhaité n'est pas disponible, il est aussi possible de l'implémenter.
+Dans les modèles de données, différents types de données sont disponibles pour les champs (attributs) comme, par
+exemple, le texte, les images, les nombres, les dates et les fichiers - :ref:`voici un aperçu des types de données par
+attribut <component_data-in-attributes>` ainsi qu'une :ref:`liste de tous les attributs <component_attribute_index>`.
+Si vous atteignez une limite parce que le type de donnée souhaité n'est pas disponible, il est aussi possible de
+l'implémenter soi-même avec l':ref:`API MM <ref_api>`.
 
-Les tables créées peuvent être liées par des relations 1 à n ou n à n. Il est aussi possible de connecter des tables aux tables de Contao pour établir des connexion "parent-enfant" ou implémenter des entrées de variantes.
+Il est aussi possible de connecter les tables aux autres tables du Contao Core, d'établir des :ref:`« connexions
+parent-enfant » <component_relations_child-tables>` ou de mettre en œuvre des :ref:`saisies de variantes
+<component_relations_variants>`.
+
 
 Masques de saisie
 -----------------
 
-Vous concevez des masques de saisie complexes pour le backend vous permettant d'offrir aux éditeurs le "look-and-feel" du backend de Contao auquel ils sont déjà habitués. Au sein d'un masque, vous pouvez faire afficher ou non certains éléments ("sub-palettes") en fonction de valeurs saisies ou de cases à cocher.
+Vous pouvez concevoir des masques de saisie complexes pour le backend, permettant aux « rédacteurs » de conserver le
+« look-and-feel » habituel de Contao. Au sein d'un masque de saisie, il est possible de réagir à la saisie de valeurs
+ou de cases à cocher pour afficher, au choix, différentes sous-palettes - voir :ref:`component_dca_visibility-conditions`.
 
-Il est possible de compléter les vues par des filtres, des champs de recherche et des fonctions de regroupement pour une meilleure présentation des données.
+Pour une meilleure orientation dans les données, l'affichage peut être complété par différents filtres, fonctions de
+recherche et de regroupement.
 
-Le système de droits utilisateurs flexible développé pour MetaModels vous permet de définir des vues backend différentes pour différents groupes d'éditeurs et d'administrateurs.
+Le système de droits flexible développé pour MetaModels permet de définir des vues backend différentes pour les
+groupes d'utilisateurs rédacteurs et administrateurs.
 
-Le backend peut-être personnalisé au point de restreindre l'accès de certains champs à certains groupes d'utilisateurs. Vous pouvez également personnaliser l'ordre des champs par groupe d'utilisateur.
+Le backend peut en outre être personnalisé de manière à ce que seuls certains groupes aient accès à certains champs
+de saisie, et l'ordre de ces champs peut également être adapté individuellement par groupe d'utilisateurs.
+
 
 Multilinguisme
 --------------
 
-Dès le départ, MetaModels a été pensé pour être multilangue. Les attributs supportent donc nativement la traduction des données qui sont directement stockées dans chaque langue.
-Sélectionnez le langage voulu dans les réglages du backend et vous pouvez modifier les données.
+Dès le départ, MetaModels a été conçu avec l'exigence du multilinguisme. Les attributs peuvent donc prendre en charge
+la traduction des données qu'ils stockent dans plusieurs langues. Il suffit, dans le backend, de changer de langue à
+l'aide du sélecteur de langue pour pouvoir modifier immédiatement l'enregistrement dans la langue choisie.
 
-Encore mieux : les champs qui n'ont pas à être traduits ne le seront pas ! Vous pouvez donc rendre traduisibles le nom et la description du produit mais pas le code EAN ni les dimensions.
+Le meilleur dans tout cela : les attributs qui ne sont pas traduisibles ne sont pas traduits non plus. Cela permet
+par exemple de ne rendre traduisibles que le nom et la description d'un produit, mais pas la référence produit ni les
+dimensions. Cette manière de procéder réduit la redondance des données à saisir.
 
-Filters
+:ref:`En savoir plus sur les réglages et la gestion du multilinguisme au niveau des composants d'un MetaModel.
+<component_multi-language>`
+
+
 Filtres
 -------
 
-MetaModels propose un système de filtres très puissant qui permet de réaliser des tâches complexes. L'administrateur du site peut adapter les interactions des filtres selon les besoins. Ceci en configurant et paramétrant les filtres et leurs données.
+MetaModels dispose d'un système de filtres puissant, qui permet également de réaliser des tâches complexes.
+L'administrateur du site peut adapter entièrement les interactions des filtres à ses besoins. Ceci se fait en
+configurant et en combinant les réglages de filtres et leurs paramètres.
 
-MetaModels n'impose aucune limite aux combinaisons de filtres possibles permettant des scénarions de filtrage complexes. Et grâce à la structure ouverte de l'API, vous pouvez-même facilement programmer vos propres filtres.
+MetaModels est fourni avec différents réglages de filtres permettant de générer des champs de saisie de filtrage en
+frontend, comme par exemple des menus de sélection, des filtres par plage, la recherche en texte libre, etc. -
+:ref:`un aperçu est disponible ici <component_filter_list>` ainsi que :ref:`ici, pour savoir quels attributs peuvent
+être filtrés et comment <component_data-in-attributes>`.
 
-MetaModels est fourni avec de nombreux réglages de filtres pour afficher en frontend des champs de saisie de filtrage comme menu de sélection, écarts, recherche en texte libre etc. Vous pouvez combiner ces filtres avec des conditions type ET/OU ou des requêtes SQL personnalisées pour obtenir des filtres complexes et interactifs.
+En combinant ces filtres avec des réglages de filtres tels que des conditions ET/OU ou des requêtes SQL
+personnalisées, on obtient des filtres complexes et interactifs.
+
+MetaModels n'impose aucune limite à la combinaison des filtres et maîtrise même des scénarios de filtrage extrêmement
+complexes. Grâce à la structure ouverte de l':ref:`API MM <ref_api>`, vous pouvez également programmer vos propres
+règles de filtre avec un minimum d'effort.
+
 
 Vues dynamiques
 ---------------
 
-Dans MetaModels, le concept de template "partiel" utilisé par Contao a été amélioré par l'utilisation des réglages de sortie. L'utilisateur peut personnaliser chaque aspect d'une vue depuis le niveau d'un enregistrement à celui d'un attribut.
+Grâce aux réglages de rendu, MetaModels a repris le concept de template « partiel » de Contao sous une forme
+enrichie. L'utilisateur peut personnaliser chaque aspect des vues, au niveau des attributs comme des enregistrements.
 
-De nombreux réglages globaux sont gérés directement depuis le backend. Mais ils peuvent être écrasés, modifiés ou ignorés à l'aide de templates personnalisés au niveau des enregistrements comme des champs de données (attributs).
+De nombreux réglages généraux peuvent être définis dans la configuration du backend. Ils peuvent toutefois être
+écrasés, adaptés finement ou même totalement ignorés en définissant un template propre au niveau des attributs ou des
+enregistrements. Ces réglages de rendu offrent la manière la plus flexible de définir des « vues de données ».
 
-Les concepteurs peuvent créer une vue (totalement) différente pour chaque usage, que ce soit une simple liste, une accroche pour la page d'accueil ou la vue de détail d'un ensemble de données. Ils peuvent définir où et quand cette vue doit être utilisée.
+Le concepteur peut définir une vue totalement différente pour chaque usage, qu'il s'agisse d'une simple sortie en
+liste, d'une accroche pour la page d'accueil ou d'une vue de détail d'un enregistrement, ainsi que le moment et
+l'endroit où elle doit être utilisée.
 
-Coup d'œil
+La page « :ref:`component_templates` » explique la hiérarchie et la structure des templates.
+
+
+Extensions
 ----------
 
-Nous travaillons continuellement pour améliorer les fonctionnalités de MetaModels.
-Parmi les fonctions à venir :
+Pour des tâches spécifiques, il existe des paquets supplémentaires qui complètent ou étendent les fonctionnalités de
+MetaModels, comme par exemple une recherche par périmètre géographique, une liste de favoris, l'édition en frontend
+ou une interface avec la boutique `Isotope`.
 
-* Types de sorties avancés comme les RSS et les autres systèmes de syndications, XML, CSV
-* Fonctions d'import-export
-* Édition en front-end
-* une API pour le module de commerce en ligne 'Isotope'
+Un aperçu est disponible ici : :ref:`extended_index`
 
-Par votre soutien financier ou des développement sur commande, vous nous permettez d'ajouter rapidement de nouvelles fonctions. - Plus d'informations sur le site du projet :  <https://now.metamodel.me>`_.
+
+Perspectives
+------------
+
+Nous travaillons continuellement à enrichir l'éventail des fonctions de MetaModels. Une mise en œuvre rapide de
+nouvelles fonctions n'est possible qu'avec un soutien financier ou la mise à disposition de développements sur
+commande - informations à ce sujet sur le `site du projet MetaModels <https://now.metamodel.me>`_ ou en contactant
+directement l'équipe MM : `mail@metamodels.me <mailto:mail@metamodels.me>`_.

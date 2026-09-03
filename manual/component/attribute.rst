@@ -1,97 +1,247 @@
 .. _component_attribute:
 
-|img_fields_32| Attributes
-==========================
+|svg_fields_32| |img_fields_32| Attributs
+============================================
 
-.. note:: create and configure own columns of the database table as attributes 
+.. note:: créer ses propres colonnes de la table de base de données sous forme d'attributs et les
+   configurer |br|
+   Pour créer les colonnes d'attribut dans la table mm_*, effectuer une migration de base de
+   données - :ref:`voir Gestionnaire de schéma <component_schema-manager>`
+
 
 Introduction
 ------------
 
-The attributes component is one of the very basic settings in a MetaModel. The attributes component allows you to define custom, specific data fields and create them within the data base table as columns.
+Le composant « Attributs » est l'un des réglages les plus fondamentaux d'un MetaModel. Les
+attributs permettent de définir les champs de données propres et spécifiques et de les créer sous
+forme de colonnes dans la table de base de données. La page :ref:`component_data-in-attributes`
+indique quel attribut peut être utilisé pour quel type de donnée de la base de données. Outre les
+types de données habituels comme ``varchar``, ``int``, ``text``, etc., il existe également des
+attributs pour des stockages spéciaux - pour en savoir plus, voir la liste suivante.
 
-When creating an attribute "|img_new| New attribute" there are two mandatory fields defined: selection of the attribute type and the entry of the column name. The column name defines - as indicated by the name  - the designation of the column in the data base table. Additionally you can enter a name and a description, which will also appear as designation and description within the input mask.
+Lors de la création d'un attribut « |img_new| Nouvel attribut », les champs obligatoires sont le
+choix du type d'attribut ainsi que la saisie du nom de colonne - le nom de colonne définit, comme
+son nom l'indique, la désignation de la colonne dans la table de base de données. En saisies
+supplémentaires, un nom et une description peuvent être renseignés, qui apparaîtront également
+comme désignation et description dans le masque de saisie.
 
-.. warning:: When changing an attribute type as well as when deleting an attribute, the already entered values will be deleted. However, if you need to change an attribute value while keeping the values, you should accompany this directly at database level, e.g. with the attribute column per CSV. A changed attribute should be added again in the render settings and input screens.
+.. warning:: Lors de la modification du type d'attribut, tout comme lors de la suppression de
+  l'attribut, les valeurs saisies jusque-là sont supprimées de la base de données ! Si un type
+  d'attribut doit néanmoins être modifié en conservant les valeurs, cela devrait être accompagné
+  directement au niveau de la base de données, par ex. via un export/import de la colonne
+  d'attribut au format CSV. Un attribut modifié devrait ensuite être à nouveau ajouté dans les
+  réglages de rendu et les masques de saisie.
 
-Depending on the attribute type there will be new entry options, respectively specific options available to you after reloading a page. Below you find a list of the attribute types where the specific options are pointed out:
+.. seealso:: Liste de contrôle pour la modification d'un type d'attribut :
+  :ref:`rst_cookbook_checklists_attribut_change`
 
-* **Alias**: Alias-field, e.g. for URLs  |br|
-  the alias can be created as a combination of different (existing) attributes; optionally you can enforce the regeneration upon changes in the original attributes (Force alias regenerating); an alias will not be created automatically as an unique value - for this you need to activate the checkbox "Unique values"
-  
-* **Checkbox**: Single Checkbox for boolean values |br|
-  with the checkbox you can set boolean values (0|1); a special variant is the option "Publishing checkbox"  - with this option checked, an "eye icon" will appear in the backend, whereby you'll still have to create the filtering for the "publication" by yourself; in general "published" will be used as the column name for the publishing value; with the option "Listview checkbox" you are able to use an own icon in the backend to display the status
-* **Combined values**: Combination of different attributes |br|
-  all availabe attributes, as well as the "system attributes", such as ID, PID etc. can be combined to a new attribute; this combination can be realised with a sprintf-formatting; the attributes "name" and "surname" e.g. could be combined using the statement "%s, %s"; optionally you can enforce the regeneration upon changes of the values by checking "Force regenerating"
-* **Country**: Country selection |br|
-  this attribute will make a country selection available to you; using the option "Filter available countries" will limit the selection of countries
-* **Decimal**: Decimal numbers |br|
-  this attribute can be used to store decimals, as for example money amounts; there are two decimal places
-* **File**: File picker |br|
-  the attribute "file" provides you with a file picker to select a file, respectively using the option "Multiple selection" enables you to select multiple files; 
-  additional file options can be set during the selection with the option "Customize the file tree";
-  when using pictures, note that if you want to (directly) display a thumbnail preview of a picture in the backend or in the frontend, you will have to set the option "Enable as image field with thumbnail" in the render settings of the file attribute 
-* **Langcode**: Selection of ISO language codes |br|
-  this attribute provides you a selection of language codes; the language codes can be selected with a checkbox
-* **Longtext**: Text input |br|
-  Attribute for longer text entries
-* **Numeric**: Entry of whole-numbered values (integer)
-* **Rating**: rating module with stars |br|
-  this attribute module is used to output a "star rating" in the frontend;
-  you can set several options in the backend, such as number of stars etc.
-* **Select**: Relation (1:n) to another MetaModel |br|
-  with the attribute "Select" you can create a 1:n-relation to another MetaModel; the MetaModel table, the attribute etc. can be set within the options
-* **Text table**: Input of values as a table |br| 
-  the attribute "Text table" defines a number of columns including the column designation and the column width; in the input mask you can generate any number of lines, e.g. to store several URLs or phone numbers 
-* **Tags**: Relation (m:n) to another MetaModel |br|
-  the attribute "Tags"  creates a m:n relation to another MetaModel; the MetaModel table, the attribute etc. is set within the options; 
-  the resolution of the relation takes place within a particular table of MetaModels, so that no column will be created in the MetaModel table for the attribute
-* **Text**: simple text field
-* **Date**: Date, respectively date and time |br|
-  the data are stored as Unix timestamp; if you use own SQL filtering you might need to perform conversions
-* **URL**: Link text and URL |br|
-  entry of external links (enter with "\http://") or use the page picker
-  internal links; you can display only the URL by choosing the option "Remove title"
-  
-If the option "Translation" is activated in the MetaModel, the following attributes will be additionally availabe to you for multilingualism:
+Selon le type d'attribut, d'autres possibilités de saisie ou options sont disponibles après un
+rechargement de la page. Voici une liste des types d'attribut avec des indications sur les options
+spécifiques :
 
-* Translated checkbox
-* Translated combined values.
-* Translated file
-* Translated longtext
-* Translated select
-* Translated table text
-* Translated tags
-* Translated text
+* **Alias** : champ alias, par ex. pour les paramètres URL lors du filtrage |br|
+  l'alias peut être créé comme combinaison de différents attributs (existants) ; en option, la
+  régénération de l'alias peut être forcée lors de modifications des attributs d'origine (forcer la
+  régénération de l'alias) ; un alias n'est pas automatiquement créé comme valeur unique - cela
+  nécessite l'activation de la case « Valeurs uniques » - :ref:`plus... <component_attribute_alias>`
+* **Case à cocher (Checkbox)** : case à cocher unique pour les valeurs booléennes |br|
+  la case à cocher permet de définir des valeurs booléennes (0|1) ; une variante spéciale est la
+  « Publication » - avec elle, une icône « œil » apparaît dans le backend, le filtrage pour la
+  publication elle-même devant être créé séparément ; le nom de colonne généralement utilisé pour
+  la valeur de publication est « published » ; via l'option « Case à cocher en vue liste », une
+  icône personnalisée peut être utilisée dans le backend pour afficher le statut -
+  :ref:`plus... <component_attribute_checkbox>`
+* **Entrées combinées** : combinaison de différents attributs |br|
+  tous les attributs existants ainsi que les « attributs système » comme ID, PID, etc. peuvent être
+  combinés en un nouvel attribut ; la combinaison s'effectue via un formatage sprintf ; par ex., les
+  deux attributs « Nom » et « Prénom » peuvent être combinés via l'instruction « %s, %s » en
+  « Nom, Prénom » ; l'option « Forcer l'actualisation » impose la régénération lors de modifications
+  des valeurs - :ref:`plus... <component_attribute_combinedvalues>`
+* **Pays** : sélection de pays |br|
+  cet attribut propose une sélection de pays ; la sélection des pays peut être restreinte avec
+  l'option « Filtrer les pays disponibles » - :ref:`plus... <component_attribute_country>`
+* **Décimal** : nombres décimaux |br|
+  cet attribut est destiné au stockage de nombres décimaux comme des montants monétaires ; il y a
+  deux décimales - :ref:`plus... <component_attribute_decimal>`
+* **Fichier** : sélecteur de fichier |br|
+  l'attribut « Fichier » propose un sélecteur de fichier pour choisir un fichier, ou plusieurs
+  fichiers si l'option « Sélection multiple » est activée ; l'option « Personnaliser l'arborescence
+  de fichiers » permet de définir d'autres options de fichier pendant la sélection ; pour une
+  utilisation avec des images, il faut noter que, pour un affichage (direct) de vignettes dans le
+  backend ou le frontend, l'option « Utiliser comme champ image avec vignette » doit être activée
+  dans les réglages de rendu de l'attribut fichier - :ref:`plus... <component_attribute_file>`
+* **Texte long** : saisie de texte |br|
+  attribut pour des saisies de texte plus longues - :ref:`plus... <component_attribute_longtext>`
+* **Numérique** : saisie de valeurs entières (Integer) - :ref:`plus... <component_attribute_numeric>`
+* **Sélection simple [select]** : relation (1:n) vers une autre table de MetaModels ou de Contao |br|
+  l'attribut « Sélection » crée une relation 1:n vers une autre table ; il peut s'agir aussi bien
+  d'une table MetaModels que de toute autre table de Contao, par ex. tl_member -
+  :ref:`plus... <component_attribute_select>`
+* **Tableau de texte** : saisie de valeurs sous forme de tableau |br|
+  l'attribut « Tableau de texte » définit un nombre de colonnes, y compris leur désignation et leur
+  largeur ; dans le masque de saisie, un nombre quelconque de lignes peut ensuite être créé, par ex.
+  pour enregistrer plusieurs URL ou numéros de téléphone - :ref:`plus... <component_attribute_tabletext>`
+* **Sélection multiple [tags]** : relation (m:n) vers une autre table de MetaModels ou de Contao |br|
+  l'attribut « Sélection » crée une relation m:n vers une autre table ; il peut s'agir aussi bien
+  d'une table MetaModels que de toute autre table de Contao, par ex. tl_page ; la résolution de la
+  relation s'effectue dans une table spéciale de MetaModels, de sorte qu'aucune colonne n'est créée
+  dans la table MetaModel pour cet attribut - :ref:`plus... <component_attribute_tags>`
+* **Texte** : champ de texte simple - :ref:`plus... <component_attribute_text>`
+* **Date** : date, ou date et heure |br|
+  les données sont stockées sous forme d'horodatage Unix ; pour des filtrages SQL personnalisés,
+  des conversions peuvent le cas échéant être nécessaires - :ref:`plus... <component_attribute_timestamp>`
+* **URL** : texte de lien et URL |br|
+  saisie de liens externes (y compris en saisissant « \http:// ») ou de liens internes via le
+  sélecteur de page ; en option, « Supprimer le titre » permet de n'afficher que l'URL -
+  :ref:`plus... <component_attribute_url>`
 
-These attributes differ from their monolingual attributes only regarding the multilingual informations for name and description. Special tables of the extension will be used for the translated attributes, not the table which has been generated when creating the MetaModel.
+Si l'option « Traduction » est activée dans le MetaModel, les attributs suivants sont en outre
+disponibles pour un usage multilingue :
 
-Note that you usually *don't* need to choose between the options "Translated select" and "Translated tags" regarding relations per "Select" or "Tags"  between two MetaModel with translations.
+* Case à cocher traduite - :ref:`plus... <component_attribute_translatedcheckbox>`
+* Entrées combinées traduites - :ref:`plus... <component_attribute_translatedcombinedvalues>`
+* Fichier traduit - :ref:`plus... <component_attribute_translatedfile>`
+* Texte long traduit - :ref:`plus... <component_attribute_translatedlongtext>`
+* Sélection simple traduite - :ref:`plus... <component_attribute_translatedselect>`
+* Tableau de texte traduit - :ref:`plus... <component_attribute_translatedtabletext>`
+* Sélection multiple traduite - :ref:`plus... <component_attribute_translatedtags>`
+* Texte traduit - :ref:`plus... <component_attribute_translatedtext>`
 
-MetaModels will recognize and switch between languages automatically. The two "translated variants" are mainly determined to bind tables which do not belong to MetaModels and have independent fields for the language variant.
+Ces attributs se distinguent de leurs équivalents monolingues essentiellement par la saisie des
+indications multilingues pour le nom et la description. Pour les attributs traduits, des tables
+spéciales de l'extension sont utilisées, et non la table générée lors de la création du MetaModel.
 
-More attributes can be provided by additional extensions of MetaModels besides the above mentioned. 
+Il faut noter que, pour des relations via « Sélection simple » ou « Sélection multiple » entre deux
+MetaModels avec traductions, il ne faut généralement *pas* choisir les options « Sélection simple
+traduite [select] » et « Sélection multiple traduite [tags] ». La détection ou le basculement de la
+langue est effectué automatiquement par MetaModels avec les attributs « Sélection simple » et
+« Sélection multiple ».
 
-The sequence of creating attributes is freely definable. Only for attributes with relations to other attributes, e.g. an "alias" or "Combined values", a subsequent creation makes sense.
+Les deux « variantes traduites » sont principalement destinées à la connexion de tables qui
+n'appartiennent pas à MetaModels et possèdent leur propre champ pour la variante linguistique - ou
+pour le cas particulier où, dans le MetaModel référencé, des Items différents doivent être
+sélectionnés selon la langue. Pour en savoir plus, voir une page spéciale sur le multilinguisme -
+sponsors recherchés pour cela !
 
-Regarding the attributes "Select" and "Tags" the referencing MetaModel have to be created first.
+Outre les attributs listés, d'autres types d'attribut peuvent être proposés via des extensions
+supplémentaires de MetaModels. Les attributs sont installés via Composer ou, comme des extensions
+Contao classiques, par copie dans le dossier « modules » (selon la mise à disposition par le
+développeur).
+
+Voici des exemples d'attributs supplémentaires :
+
+* **Évaluation** : module d'évaluation avec des étoiles |br|
+  ce module d'attribut sert à afficher une « évaluation par étoiles » en frontend ; dans le
+  backend, différentes options comme le nombre d'étoiles peuvent être réglées -
+  :ref:`plus... <component_attribute_rating>`
+* **Sélecteur de couleur** : sélection de couleurs web et de transparence -
+  :ref:`plus... <component_attribute_color>`
+* **Levenshtein** : recherche de mots selon Levenshtein |br|
+  cet attribut détermine une similarité de mots pour une recherche flexible -
+  :ref:`plus... <component_attribute_levenshtein>`
+* **Sélection de pays** : liste de sélection avec des pays - :ref:`plus... <component_attribute_country>`
+* **Clé de langue** : sélection de codes de langue ISO |br|
+  cet attribut propose une sélection de codes de langue ; les codes de langue peuvent être
+  sélectionnés via une case à cocher - :ref:`plus... <component_attribute_langcode>`
+* **ContentArticle** : possibilité de créer des éléments de contenu Contao, comme dans un |br|
+  article, dans un widget - :ref:`plus... <component_attribute_contentarticle>` |br|
+  existe également en variante traduite - :ref:`plus... <component_attribute_translatedcontentarticle>`
+* **Tableau multi** : similaire à l'attribut « Tableau de texte », à ceci près que dans chaque |br|
+  « cellule » un type de widget propre comme Select, boutons radio, cases à cocher, etc. peut être
+  intégré - :ref:`plus... <component_attribute_tablemulti>` |br|
+  existe également en variante traduite - :ref:`plus... <component_attribute_translatedtablemulti>`
+* **Distance géographique** : calcule, lors d'une recherche par périmètre, la distance |br|
+  géographique par rapport au point de recherche ; cette valeur permet de trier les listes selon la
+  distance - :ref:`plus... <component_attribute_geodistance>`
+* **LatLong** (à partir de MM 2.5) : paire de coordonnées (latitude/longitude) sous forme de |br|
+  ``POINT`` natif dans une colonne, en option avec un index spatial pour une recherche par périmètre
+  plus rapide ; saisie au choix via une recherche d'adresse avec carte -
+  :ref:`plus... <component_attribute_latlong>`
+* **Token** (à partir de MM 2.4) : chaîne de caractères unique |br|
+  création de chaînes de caractères uniques qui ne changent plus ensuite -
+  :ref:`plus... <component_attribute_token>`
+
+L'ordre dans lequel les attributs sont créés est libre - seuls les attributs qui se réfèrent à
+d'autres attributs, comme par ex. « Alias » ou « Entrées combinées », gagnent à être créés après
+coup.
+
+Pour les attributs « Sélection simple » et « Sélection multiple », les MetaModels référencés
+doivent en outre déjà être créés.
+
 
 Options
 -------
 
-Two options are available for all attributes: "Enable variant override" and "Unique values".
+Deux options sont disponibles pour tous les attributs : « Écraser les variantes » et « Valeurs
+uniques ».
 
-By using the option "Enable variant override" the attribute will also be available in the input masks of the variant input. A precondition of this is, that the option "Variants" has been set before in the MetaModel.
+Avec « Écraser les variantes », l'attribut est également disponible dans les masques de saisie de
+la saisie de variantes. Cela suppose que l'option « Variantes » soit activée pour le MetaModel -
+sinon la case est inactive.
 
-By using the option "Unique values" attribute inputs will be checked for uniqueness.
-
-Work flow
----------
-
-A new attribute is opened by clicking "|img_new| New attribute". After you have entered, respectively selected all necessary options, the setting will be saved and it appears in the attribute list of the existing MetaModel.
-The order of the list has no further impact.
+Avec l'option « Valeurs uniques », les saisies de l'attribut sont vérifiées pour leur unicité
+(unique).
 
 
+Déroulement
+-----------
+
+Un nouvel attribut s'ouvre via « |img_new| Nouvel attribut ». Une fois toutes les options
+nécessaires renseignées ou sélectionnées, le réglage est enregistré et apparaît dans la liste des
+attributs des MetaModels existants. L'ordre dans la liste n'a pas d'autre influence.
+Effectuer la migration de base de données !
+
+.. seealso:: Dans le livre de recettes :
+
+   * :ref:`rst_cookbook_checklists_attribut_new`
+   * :ref:`rst_cookbook_tips_speedup_backend`
+
+
+Détails de tous les attributs
+--------------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   attribute/alias
+   attribute/checkbox
+   attribute/combinedvalues
+   attribute/decimal
+   attribute/file
+   attribute/longtext
+   attribute/numeric
+   attribute/select
+   attribute/tabletext
+   attribute/tags
+   attribute/text
+   attribute/timestamp
+   attribute/url
+   attribute/translatedalias
+   attribute/translatedcheckbox
+   attribute/translatedcombinedvalues
+   attribute/translatedfile
+   attribute/translatedlongtext
+   attribute/translatedselect
+   attribute/translatedtabletext
+   attribute/translatedtags
+   attribute/translatedtext
+   attribute/translatedurl
+   attribute/rating
+   attribute/color
+   attribute/levenshtein
+   attribute/country
+   attribute/langcode
+   attribute/contentarticle
+   attribute/translatedcontentarticle
+   attribute/tablemulti
+   attribute/translatedtablemulti
+   attribute/geodistance
+   attribute/latlong
+   attribute/token
+
+
+.. |svg_fields_32| image:: /_img/icons_svg/fields.svg
+   :width: 32px
 .. |img_fields_32| image:: /_img/icons/fields_32.png
 .. |img_fields| image:: /_img/icons/fields.png
 .. |img_new| image:: /_img/icons/new.gif
@@ -99,7 +249,6 @@ The order of the list has no further impact.
 .. |br| raw:: html
 
    <br />
-   
-.. |nbsp| unicode:: 0xA0 
-   :trim:
 
+.. |nbsp| unicode:: 0xA0
+   :trim:

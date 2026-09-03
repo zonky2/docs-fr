@@ -1,22 +1,29 @@
 .. _mm_first_new-mm:
 
-|img_new| New MetaModel
-===========================
+|img_new| Nouveau MetaModel
+============================
 
-With a click on the icon "|img_new| New MetaModel" the input mask to create a new MetaModel opens.
-Enter "employee list" into the field "Name" and "mm_employeelist" in to the field "Table name" - see screenshot below.
+En cliquant sur l'icône « |img_new| Nouveau MetaModel », le masque de saisie
+permettant de créer le nouveau MetaModel s'ouvre. Dans le champ « Nom », on saisit
+« Liste des employés » et dans le champ « Nom de la table », on saisit
+« mm_listeemployes » - voir la copie d'écran.
 
-|img_new-mm_01_en|
+|img_new-mm_01|
 
-After saving and closing of the input screen you come back to the Metamodels overview. Here you should see now the first MetaModel "Employee list" -  see screenshot below.
+Après l'enregistrement et la fermeture du masque de saisie, on revient à la vue
+d'ensemble des MetaModels. Le premier MetaModel « Liste des employés » devrait
+maintenant y figurer - voir la copie d'écran.
 
-|img_new-mm_02_en|
+|img_new-mm_02|
 
-By saving the MetaModel "Employee list" a table named "mm_employeelist" was also created in the database. 
-Now we can go on with setting up the MetModel components with their respective  icons. All the :ref:`component_index` which don't need to be configured are omitted or a corresponding note is given.
+En créant le MetaModel « Liste des employés », une table « mm_listeemployes » a
+également été créée dans la base de données. Le traitement peut se poursuivre à
+l'aide des icônes des composants du MetaModel. Tous les :ref:`component_index` qui
+n'ont pas besoin d'être configurés sont omis, ou une remarque correspondante est
+donnée.
 
 
 .. |img_new| image:: /_img/icons/new.gif
 
-.. |img_new-mm_01_en| image:: /_img/screenshots/metamodel_first/new-mm_01_en.png
-.. |img_new-mm_02_en| image:: /_img/screenshots/metamodel_first/new-mm_02_en.png
+.. |img_new-mm_01| image:: /_img/screenshots/metamodel_first/new-mm_01.png
+.. |img_new-mm_02| image:: /_img/screenshots/metamodel_first/new-mm_02.png
