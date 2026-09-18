@@ -3,18 +3,19 @@
 Modifications et fonctionnalités de MM 2.5
 ==========================================
 
-Vous trouverez ci-dessous un aperçu des modifications et fonctionnalités de MetaModels 2.5, rendues possibles
-grâce au « programme early adopter » - pour en savoir plus sur le financement, voir la rubrique Fundraising sur le
+Vous trouverez ci-dessous un aperçu des modifications et fonctionnalités de MetaModels 2.5, rendues possibles/en
+cours grâce au « **programme early adopter** » (EAP) - pour en savoir plus, voir la rubrique **Fundraising** sur le
 `site web de MM <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_.
 
-Pour une vérification après une mise à niveau vers MM 2.5, voir :ref:`plus d'indications ci-dessous
+Pour une **vérification après une mise à niveau** vers MM 2.5, voir :ref:`plus d'indications ci-dessous
 <check_upgrade_mm250>`.
 
 
 Généralités et Core
 -------------------
 
-MetaModels 2.5 nécessite **Contao 5.7** et **PHP 8.4**.
+MetaModels 2.5 nécessite **Contao 5.7** et **PHP 8.4** - ainsi, actuellement encore, une
+`clé d'accès EAP <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_.
 
 Les principales nouvelles fonctionnalités sont :
 
@@ -33,6 +34,8 @@ Les principales nouvelles fonctionnalités sont :
 - modifications d'enregistrements dans le journal système
 - **gestion des versions** pour la configuration MM et les items MM
 - **diverses accélérations** au niveau du DCG, de la recherche par périmètre/géodistance, du rendu différé (Lazy-Rendering)
+- manuel entièrement disponible en `anglais <https://metamodels.readthedocs.io/en/latest/>`_ et en
+  `français <https://metamodels.readthedocs.io/fr/latest/>`_
 
 
 Templates Twig (NOUVEAU)
@@ -667,6 +670,21 @@ du projet ; ils disparaîtront dans MetaModels 3.0.
     * nouvelle option **Pas d'arrondi (km)** - arrondit la valeur de distance affichée à un multiple de cette
       valeur, sans influencer le tri (qui reste toujours exact)
 
+* Alias (alias) et Valeurs combinées (combinedvalues)
+    * **Les champs source multilingues se construisent désormais à partir de la langue de repli :** si, parmi
+      les champs composant l'alias ou la valeur combinée, se trouve un attribut traduit, la valeur générée
+      changeait jusqu'ici selon la langue dans laquelle le jeu de données était actuellement édité et
+      enregistré - un jeu de données enregistré pour la dernière fois en anglais recevait une valeur issue des
+      champs anglais, alors même que la langue de repli était l'allemand. Les deux types d'attributs étaient
+      concernés de la même manière, car ils suivent le même schéma.
+    * De tels champs sont désormais toujours lus depuis la **langue principale** (langue de repli) du
+      MetaModel, indépendamment de la langue actuellement éditée. La valeur générée reste ainsi stable. Seuls
+      les champs traduits sont concernés ; les champs non traduits et les colonnes méta (par ex. ``id``) se
+      comportent sans changement.
+    * Cela ne concerne que les MetaModels multilingues comportant un champ traduit parmi les champs source. Une
+      valeur déjà existante n'est pas modifiée rétroactivement - seul le prochain enregistrement (avec alias
+      forcé ou valeurs combinées forcées) la reconstruit à partir de la langue de repli.
+
 
 Filtres
 -------
@@ -743,7 +761,8 @@ Problèmes connus
   ``referer`` reste **vide**, de sorte qu'après la bascule, Contao ramène vers le tableau de bord du backend au
   lieu de la page de départ. Cela concerne le propre bouton de bascule de débogage de Contao et n'est pas pris
   en charge par la nouvelle gestion du Referer du DC_General (ses propres boutons « Retour ») - Contao n'offre
-  à cet endroit aucun moyen d'influencer le referer.
+  à cet endroit aucun moyen d'influencer le referer. |br|
+  Un correctif a été proposé : `contao/contao PR #10206 <https://github.com/contao/contao/pull/10206>`_.
 
 
 .. _check_upgrade_mm250:

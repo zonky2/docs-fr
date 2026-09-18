@@ -218,6 +218,14 @@ Les séquences ``[-]``, ``[zwsp]``, ``&shy;`` et ``&ZeroWidthSpace;`` (séparate
 conditionnels utilisés par Contao pour la mise en forme du texte) sont automatiquement
 supprimées avant la génération du slug, afin qu'elles n'apparaissent pas dans l'alias.
 
+**Champs alias multilingues (depuis MM 2.5)**
+
+Si l'un des champs alias sélectionnés est un attribut traduit, sa valeur est toujours lue
+depuis la **langue principale** (langue de repli) du MetaModel - indépendamment de la
+langue dans laquelle le jeu de données est actuellement édité. L'alias généré reste ainsi
+stable et ne change pas selon la langue éditée. Les champs non traduits et les colonnes
+méta (par ex. ``id``) ne sont pas concernés.
+
 
 .. |svg_attr_alias_22| image:: /_img/icons_svg/alias.svg
    :width: 22px

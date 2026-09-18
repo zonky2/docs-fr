@@ -219,8 +219,8 @@ transmettant le service comme argument dans le ``services.yml``.
    # config/services.yml
    services:
      App\EventListener\PrePersistModelEventListener:
-     arguments:
-       - '@metamodels.factory'
+       arguments:
+         - '@metamodels.factory'
        tags:
          - { name: kernel.event_listener, event: dc-general.model.pre-persist }
 

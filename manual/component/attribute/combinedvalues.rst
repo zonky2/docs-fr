@@ -194,6 +194,14 @@ nombre d'espaces réservés doit correspondre au nombre de champs sélectionnés
 La valeur combinée est enregistrée sous la forme ``text NULL``. Une valeur vide est
 enregistrée comme ``NULL`` (compatible avec le mode strict de MySQL).
 
+**Champs source multilingues (depuis MM 2.5)**
+
+Si l'un des champs sélectionnés est un attribut traduit, sa valeur est toujours lue
+depuis la **langue principale** (langue de repli) du MetaModel - indépendamment de la
+langue dans laquelle le jeu de données est actuellement édité. La valeur combinée
+générée reste ainsi stable et ne change pas selon la langue éditée. Les champs non
+traduits et les colonnes méta (par ex. ``id``) ne sont pas concernés.
+
 
 .. |svg_attr_combinedvalues_22| image:: /_img/icons_svg/combinedvalues.svg
    :width: 22px
