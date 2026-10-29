@@ -57,13 +57,39 @@ Aperçu des versions
 -------------------
 
 * C 6.x + MM 3.0 + PHP 8.x - actuellement en planification...
-* C 6.3 + MM 2.6 + PHP 8.4 - actuellement en cours de développement et de test avec Contao 6.0
+* :ref:`C 6.3 + MM 2.6 + PHP 8.4 <install_mm260>` - actuellement en test avec Contao 6.x-dev
 * :ref:`C 5.7 + MM 2.5 + PHP 8.4 <install_mm250>` - actuellement en test avec Contao 5.7
 * :ref:`C 5.3 + MM 2.4 + PHP 8.2 <install_mm240>` - accès via « EAP »
 * :ref:`C 4.13 + MM 2.3 + PHP 8.1 <install_mm-old>`
 * :ref:`C 4.9 + MM 2.2 + PHP 7.4 <install_mm-old>`
 * :ref:`C 4.4 + MM 2.1 + PHP 7.2/7.4 <install_mm-old>`
 * :ref:`C 3.5 + MM 2.0 + PHP 5.6 <install_mm-old>`
+
+
+.. _install_mm260:
+Installation de MM 2.6 pour Contao 6.x et PHP 8.4
+-------------------------------------------------
+
+MetaModels 2.6 requiert Contao 6.x et PHP 8.4 et apporte bien sûr
+:ref:`tous les changements et fonctionnalités de MM 2.5 <new_in_mm250>`.
+
+Les prérequis d'installation pour MetaModels 2.6 sont :
+
+* un Contao 6.x en fonctionnement
+* à partir de PHP 8.4
+* Au minimum MySQL 5.7.6 ou MariaDB 10.4.3
+* ``memory_limit`` de 512 Mo ou plus (recommandation)
+* jusqu'à la publication, une clé d'accès via l'`EAP <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-6>`_
+
+Des versions supérieures de Contao et/ou PHP peuvent fonctionner, mais ne sont pas officiellement supportées.
+
+Lors d'une mise à niveau ou d'une nouvelle installation, il faut tenir compte des :ref:`changements et nouvelles
+fonctions de MM 2.6 <new_in_mm260>`.
+
+.. toctree::
+    :maxdepth: 1
+
+    new-in-mm-26.rst
 
 
 .. _install_mm250:
