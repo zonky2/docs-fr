@@ -83,8 +83,7 @@ spécifiques suivantes :
 Réglages dans les réglages de rendu
 -------------------------------------
 
-L'attribut Sélection multiple ne possède pas de réglages de rendu spécifiques.
-Dans la liste des attributs d'un réglage de rendu, les options habituelles sont
+Dans la liste des attributs d'un réglage de rendu, les options suivantes sont
 disponibles :
 
 .. list-table::
@@ -97,6 +96,24 @@ disponibles :
      - Sélection d'un template propre pour l'affichage des valeurs liées.
    * - Classe CSS
      - Classe CSS optionnelle ajoutée à l'élément de sortie.
+   * - Attributs supplémentaires (depuis MM 2.5)
+     - Uniquement avec un MetaModel comme table source : attributs du MetaModel cible qui sont chargés en plus des
+       attributs de base (tri des valeurs, alias, ID et sélection) et mis à disposition dans les valeurs des tags (nœuds ``raw`` et
+       ``text``). Voir ci-dessous.
+
+**Attributs supplémentaires (depuis MM 2.5)**
+
+Pour les jeux de données sélectionnés du MetaModel cible, les **attributs de base** sont toujours chargés - les colonnes choisies dans les
+réglages de l'attribut comme colonne de valeur, colonne d'alias, colonne d'ID et tri de la sélection. Tous les autres
+attributs du MetaModel cible peuvent être cochés pour chaque réglage de rendu afin d'être également disponibles, par
+ex. pour l'affichage dans la vue détaillée. Comme la sélection est effectuée dans le réglage de rendu, la liste et la
+page de détail peuvent charger des attributs différents.
+
+* Si **aucune sélection** n'est encore enregistrée (pour les réglages de rendu existants et pour ceux créés en
+  masse), **tous** les attributs sont chargés comme auparavant ; dans le backend, ils sont alors tous cochés.
+* Si **aucun** attribut n'est coché et que cet état est enregistré, seuls les attributs de base sont chargés. C'est
+  le plus rapide, un template ne doit alors plus accéder qu'à ceux-ci.
+* Avec une table Contao comme table source, l'option n'existe pas : la ligne complète est toujours chargée.
 
 
 Réglages dans le masque de saisie

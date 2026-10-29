@@ -29,6 +29,8 @@ se trouvent sur `Github <https://github.com/MetaModels>`_.
     changelanguage-bridge
     erd-viewer
     health-check
+    contao-api
+    mcp-admin
 
 
 autres extensions connues

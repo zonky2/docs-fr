@@ -17,6 +17,8 @@ copie de « metamodel_prerendered » dans le dossier Contao « /templates ».
 
 Le template concerné est complété au début par les lignes suivantes :
 
+HTML5 :
+
 .. code-block:: php
    :linenos:
 
@@ -26,6 +28,14 @@ Le template concerné est complété au début par les lignes suivantes :
        dump($this->data);
    }
    ?>
+
+Twig (à partir de MM 2.5) :
+
+.. code-block:: twig
+   :linenos:
+
+   {# The dump tag sends the output to the Symfony toolbar, the dump() function would print it into the page. #}
+   {% dump data %}
 
 Ensuite, il faut consulter la page en frontend en mode débogage. Pour
 cela, activer le mode débogage dans l'en-tête du backend, ou, pour un

@@ -96,6 +96,12 @@ exemple, un widget de filtre étend le template standard avec
 ``{% extends "@Contao/metamodels/filter/default.html.twig" %}`` et surcharge les blocs ``formlabel`` et
 ``formfield``.
 
+**Blocs dans les templates wrapper (à partir de 2.5.2) :** Les templates ``mm_filter_default``, ``mm_clearall_default``
+et ``mm_pagination`` sont eux aussi subdivisés en blocs (pour le filtre, par ex. ``headline``, ``filter`` et
+``submit``). Un template personnalisé peut étendre le template standard via
+``{% extends "@Contao/mm_filter_default.html.twig" %}`` et ne surcharger que le bloc souhaité. Détails et exemple :
+:ref:`component_templates_twig-blocks`.
+
 **Surcharges existantes :** Une surcharge existante d'un nom de template **à plat** dans le dossier
 ``templates/`` du projet (ou dans un dossier de thème) - par exemple ``templates/metamodel_prerendered.html5`` -
 conserve la **priorité** sur un template Twig fourni. Les adaptations existantes continuent donc de fonctionner
@@ -613,6 +619,25 @@ du projet ; ils disparaîtront dans MetaModels 3.0.
       jamais été proposées au choix du rédacteur, qui ne pouvait donc pas non plus les désélectionner. Étaient
       concernés aussi bien l'attribut ``tags`` que les références Tags vers un autre MetaModel.
 
+* Sélection unique [Select] et Sélection multiple [Tags] avec un **MetaModel** comme source
+    * **Attributs supplémentaires par réglage de rendu (NOUVEAU) :** Jusqu'à la 2.4, MetaModels chargeait toujours
+      **tous** les attributs du jeu de données choisi du MetaModel cible et rendait chacun d'eux avec son template
+      standard - même si la sortie n'en nécessite qu'une partie. À partir de la 2.5, seuls les **attributs de base**
+      sont d'abord chargés (colonnes de valeur, d'alias, d'ID et de tri de l'attribut). Les autres attributs du
+      MetaModel cible disponibles dans les nœuds ``raw`` et ``text`` de l'entrée se choisissent dans le réglage de
+      rendu, au niveau de l'attribut (champ « Attributs supplémentaires », section « Avancé »).
+    * Comme la sélection s'applique **par réglage de rendu**, la liste et la page de détail peuvent charger des
+      attributs différents : la liste le strict nécessaire, la page de détail davantage.
+    * **Pour les sorties existantes, rien ne change.** Si un réglage de rendu n'a pas encore de sélection - c'est le
+      cas de tous les réglages existants, mais aussi de ceux créés en masse -, tous les attributs sont chargés comme
+      auparavant. Dans le backend, tous les attributs sont alors cochés. Si la sélection est enregistrée, elle
+      s'applique telle quelle ; si **aucun** attribut n'est coché, seuls les attributs de base sont chargés (le plus
+      rapide).
+    * À noter : quiconque décoche des attributs ne les reçoit plus dans l'entrée - un template ne doit alors plus
+      accéder qu'aux attributs choisis (par ex. ``raw`` de l'attribut de sélection).
+    * Ne s'applique que si l'attribut renvoie vers un **MetaModel**. Pour une **table Contao** ainsi que pour
+      Sélection traduite et Tags traduits, la ligne complète est toujours chargée, l'option n'y existe pas.
+
 * Levenshtein (levenshtein)
     * **Orthographe corrigée partout :** Le type d'attribut s'appelait, depuis sa toute première version,
       ``levensthein`` - avec ``h`` et ``t`` inversés. Le nom des classes, le paquet Composer et le template
@@ -806,6 +831,12 @@ seulement très difficilement. C'est pourquoi, lors du passage à MM 2.5, les po
   Rien ne change dans l'utilisation. Seul doit adapter son code qui utilise lui-même les anciens fichiers : son
   propre CSS qui intègre un symbole MetaModels comme image de fond, ou ses propres indications DCA qui pointent
   vers un chemin ``.png`` sous ``bundles/metamodels…/images/``. Il faut y changer l'extension en ``.svg``
+* **Sélection unique [Select] et Sélection multiple [Tags] avec un MetaModel comme source :** les attributs du jeu de
+  données choisi dans le nœud ``raw`` resp. ``text`` se choisissent par réglage de rendu (champ « Attributs
+  supplémentaires »). Il n'y a rien à faire : sans sélection, tous les attributs sont chargés comme auparavant. Ne
+  doit adapter que qui veut accélérer la sortie et décoche pour cela des attributs - les templates ne doivent alors
+  plus accéder qu'aux attributs choisis. La nouvelle colonne ``select_attributes`` resp. ``tag_attributes`` dans
+  ``tl_metamodel_rendersetting`` est créée par la mise à jour de la base de données
 * **Attributs Fichier :** les colonnes de tri ``<nom_de_colonne>__sort`` et ``value_sorting`` sont transférées
   dans la valeur par migration, puis **supprimées** - effectuer impérativement une sauvegarde des données
   auparavant, la suppression des colonnes est irréversible. Les développements ou analyses personnalisés qui

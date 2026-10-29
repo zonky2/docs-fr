@@ -51,6 +51,66 @@ Les templates Twig propres à un paquet se trouvent - comme dans les bundles de 
 racine de namespace (dossier ``twig/`` avec un fichier marqueur vide ``.twig-root``) ; dans le
 projet, le dossier ``templates/`` suffit.
 
+.. _component_templates_twig-blocks:
+
+Blocs dans les templates wrapper (à partir de MetaModels 2.5.2)
+...............................................................
+
+Les templates wrapper pour le filtre, la réinitialisation du filtre et la fonction de pagination sont subdivisés en
+blocs Twig. Un template personnalisé n'a donc plus besoin de remplacer l'intégralité du template : il l'étend et ne
+surcharge que le bloc souhaité. La sortie des templates standard ne change pas.
+
+==============================  =====================================================================
+Template                        Blocs
+==============================  =====================================================================
+``mm_filter_default``           ``section``, ``headline``, ``form``, ``form_hidden``, ``filters``,
+                                ``filter``, ``submit``
+``mm_clearall_default``         ``section``, ``link``
+``mm_pagination``               ``nav``, ``info``, ``first``, ``previous``, ``pages``, ``next``,
+                                ``last``
+==============================  =====================================================================
+
+Le bloc ``filter`` se trouve à l'intérieur de la boucle sur tous les widgets de filtre ; la variable ``filter`` y est
+disponible. Cela permet d'adapter le markup par widget sans copier la boucle. Exemple
+(``templates/mm_filter_default.html.twig`` dans le projet) :
+
+.. code-block:: twig
+
+   {% extends "@Contao/mm_filter_default.html.twig" %}
+
+   {% block filter %}
+       <div class="col-md-4 {{ filter.class|default('') }}">
+           {{ filter.value|raw }}
+       </div>
+   {% endblock %}
+
+   {% block submit %}
+       <button type="submit" class="btn btn-primary">{{ submit }}</button>
+   {% endblock %}
+
+Avec ``{{ parent() }}``, le contenu d'origine d'un bloc est repris et complété.
+
+**Ajouter une classe CSS au bouton d'envoi :** si le bouton doit seulement recevoir des classes supplémentaires (par
+ex. ``btn btn-primary`` pour Bootstrap), il n'est pas nécessaire de réécrire le markup. ``{{ parent() }}`` fournit la
+sortie standard du bloc, dans laquelle la classe est étendue via ``replace`` :
+
+.. code-block:: twig
+
+   {% extends "@Contao/mm_filter_default.html.twig" %}
+
+   {% block submit %}
+       {{ parent()|replace({'class="submit"': 'class="submit btn btn-primary"'})|raw }}
+   {% endblock %}
+
+``<input type="submit" class="submit" …>`` devient ainsi ``<input type="submit" class="submit btn btn-primary" …>`` ;
+la classe ``submit`` et le ``submit_container`` environnant sont conservés. L'exemple suppose que le markup standard
+contient inchangé ``class="submit"``. Si le bloc a déjà été surchargé par un autre template, ``replace`` agit sur la
+sortie de celui-ci. Pour définir soi-même entièrement le markup du bouton, il suffit de le générer intégralement dans
+un bloc propre, comme dans l'exemple ci-dessus.
+
+.. warning:: Le bloc ``form_hidden`` contient le jeton de requête et ``FORM_SUBMIT``. Sans ces champs, le formulaire
+   de filtre ne peut pas être envoyé - ne le surchargez que consciemment et continuez à générer les deux champs.
+
 Voir aussi :ref:`new_in_mm250`.
 
 

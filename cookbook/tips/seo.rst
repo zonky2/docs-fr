@@ -80,6 +80,14 @@ dans le template :
 Le ``$htmlHeadBag`` pourrait également être mis à disposition via une classe helper, en injectant les services
 intégrés.
 
+.. hint:: Le titre et la description ne peuvent pas être définis via ``$GLOBALS['TL_HEAD']``. La mise en page de la
+          page (``fe_page``) génère toujours elle-même ``<title>`` et ``<meta name="description">`` à partir des
+          valeurs du ``HtmlHeadBag``. Une entrée dans ``TL_HEAD`` ne produirait qu'une seconde balise
+          supplémentaire, de sorte que le code source contiendrait des indications en double. Le ``HtmlHeadBag`` n'est
+          lu qu'après le rendu des modules. Les valeurs du template de rendu écrasent donc les indications des
+          propriétés de la page. Pour les balises que Contao ne génère pas lui-même (par ex. les balises ``og:``),
+          ``$GLOBALS['TL_HEAD']`` est en revanche la bonne méthode.
+
 
 .. _rst_cookbook_tips_seo_breadcrumb:
 Fil d'Ariane (Breadcrumb)
@@ -90,9 +98,16 @@ page de détail, le :ref:`titre de page a été généré dynamiquement à parti
 celui-ci n'est pas affiché dans le fil d'Ariane. Cela s'explique par le fait que le module FE pour le fil d'Ariane
 est généralement placé avant la MM-Liste et reçoit donc cette information trop tard, voire pas du tout.
 
+Contao peut effectuer un rendu préalable des éléments disposant de l'attribut ``shouldPreload``, de sorte que le
+titre est déjà défini lorsque le fil d'Ariane est généré (c'est ainsi que fonctionne par ex. le lecteur d'actualités).
+Cela ne fonctionne toutefois que pour les modules frontend dans la colonne de mise en page, pas pour les éléments de
+contenu. De plus, l'attribut est marqué comme obsolète depuis Contao 5.3 et disparaît dans Contao 6. La MM-Liste ne
+le définit donc pas.
+
 Un « BreadcrumbController », qui n'ajoute le fil d'Ariane qu'ultérieurement au rendu de la page, permet d'y
-remédier. On peut actuellement trouver `un exemple de code ici <https://gist.github.com/fritzmg/e7df2804365fe676b1d88f053a234707?permalink_comment_id=5698503#gistcomment-5698503>`_
-- `ce problème sera corrigé dans Contao 5.7 <https://youtu.be/nvIPd3OzXhs?t=1787>`_.
+remédier. Pour cela, il faut actuellement utiliser `l'exemple de code de Fritz <https://gist.github.com/fritzmg/e7df2804365fe676b1d88f053a234707?permalink_comment_id=5698503#gistcomment-5698503>`_.
+
+Une solution durable, basée sur le nouveau Page-Type-Controller de Contao, est à l'étude pour MetaModels 2.6.
 
 
 .. _rst_cookbook_tips_seo_metadata-hreflang:
