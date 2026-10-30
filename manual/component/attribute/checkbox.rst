@@ -48,7 +48,7 @@ options spécifiques suivantes :
        données peut ainsi être basculé directement d'un clic. Le nom de colonne
        habituellement utilisé pour cela est ``published``. Le filtrage effectif
        des jeux de données publiés en frontend doit être mis en place séparément
-       via un jeu de filtres avec la règle de filtre « Statut checkbox ».
+       via un jeu de filtres avec la règle de filtre :ref:`« Statut checkbox » <component_filter_checkbox>`.
    * - Option d'affichage inversée
      - Inverse l'état d'affichage de l'icône : une case cochée (valeur ``1``)
        affiche alors le symbole inactif, une case décochée affiche le symbole
@@ -153,10 +153,11 @@ L'attribut Checkbox peut être utilisé avec les règles de filtre suivantes :
 
    * - Règle de filtre
      - Remarque
-   * - Statut checkbox
-     - Vérifie si la valeur de la case à cocher est égale à ``1``. Généralement
-       utilisée pour le contrôle de la publication. Cette règle de filtre
-       propose deux options supplémentaires :
+   * - :ref:`Statut checkbox <component_filter_checkbox>`
+     - Vérifie si la valeur de la case à cocher est égale à ``1`` (paquet
+       ``attribute_checkbox``). Utilisée pour le contrôle de la publication,
+       sans widget frontend. Cette règle de filtre propose deux options
+       supplémentaires :
 
        * **Autoriser le remplacement** – un paramètre d'URL peut désactiver la
          règle de filtre (par ex. pour les liens d'aperçu).
@@ -167,6 +168,10 @@ L'attribut Checkbox peut être utilisé avec les règles de filtre suivantes :
      - Filtre selon une valeur checkbox précise via un paramètre d'URL ; utile
        lorsque les visiteurs doivent pouvoir filtrer eux-mêmes entre actif et
        inactif.
+   * - Oui / Non
+     - Widget pour les visiteurs (paquet ``filter_checkbox``, :ref:`voir la règle
+       de filtre <component_filter_yes-no>`) : les visiteurs choisissent eux-mêmes
+       Oui ou Non. Ne convient pas au contrôle de la publication.
 
 
 Fonctions particulières
@@ -178,7 +183,8 @@ Si « Icône de bascule » est activée, MetaModels enregistre une opération de
 dans la vue en liste du backend. Un clic sur l'icône bascule directement la valeur du
 jeu de données entre ``1`` et ``''``, sans devoir ouvrir le formulaire d'édition. Le
 filtrage des jeux de données publiés en frontend doit se faire via un jeu de filtres
-propre avec la règle de filtre « Statut checkbox » (paquet ``filter_checkbox``).
+propre avec la règle de filtre :ref:`« Statut checkbox » <component_filter_checkbox>` (paquet ``attribute_checkbox``) –
+et non avec la règle « Oui / Non », qui est un widget pour les visiteurs.
 
 **Mode inversé**
 

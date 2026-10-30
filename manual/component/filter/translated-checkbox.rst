@@ -4,7 +4,7 @@
 ==============================================================================================
 
 La règle de filtre « État de la case à cocher traduite » (paquet
-``filter_checkbox``) vérifie si la valeur d'un attribut de case à cocher traduit
+``attribute_translatedcheckbox``, appelée « Statut de publication traduit » dans le backend) vérifie si la valeur d'un attribut de case à cocher traduit
 est égale à ``1`` (actif). Elle correspond dans sa fonction à la règle de
 filtre :ref:`component_filter_checkbox`, mais est prévue pour être utilisée
 avec le type d'attribut :ref:`Case à cocher traduite
@@ -12,7 +12,11 @@ avec le type d'attribut :ref:`Case à cocher traduite
 
 L'état de la case à cocher traduite est évalué en fonction de la langue : dans
 la langue active, la valeur de la case à cocher traduite est vérifiée. Cela
-permet de piloter les états de publication par langue.
+permet de piloter les états de publication par langue. Comme pour l':ref:`État de la case à cocher
+<component_filter_checkbox>`, la règle n'affiche aucun widget dans le frontend et n'ajoute aucun paramètre à l'URL.
+
+.. warning:: La règle « Oui / Non » (paquet ``filter_checkbox``) est en revanche un widget pour les visiteurs et ne
+   convient pas au contrôle de la publication, voir :ref:`component_filter_yes-no`.
 
 .. seealso:: Pour les MetaModels monolingues, la règle de filtre
    :ref:`component_filter_checkbox` est disponible.
@@ -25,13 +29,13 @@ La règle de filtre s'installe via le **Contao Manager** ou **Composer** :
 
 .. code-block:: bash
 
-   composer require metamodels/filter_checkbox
+   composer require metamodels/attribute_translatedcheckbox
 
 
 Réglages lors de la création de la règle de filtre
 ----------------------------------------------------
 
-Les réglages correspondent entièrement à ceux de la règle de filtre
+Les réglages correspondent à ceux de la règle de filtre
 :ref:`component_filter_checkbox`. Seul le type d'attribut doit être une
 :ref:`component_attribute_translatedcheckbox`.
 
@@ -50,20 +54,10 @@ Les réglages correspondent entièrement à ceux de la règle de filtre
      - Champ de texte libre pour décrire l'objectif de cette règle de filtre.
    * - Attribut
      - L'attribut de case à cocher traduit dont la valeur doit être vérifiée.
-   * - Paramètre d'URL
-     - La clé du paramètre d'URL utilisée pour transmettre la valeur du filtre.
-       Si elle n'est pas précisée, le nom de colonne de l'attribut est utilisé.
-       Avec ``auto_item``, seule la valeur – sans clé – est intégrée dans l'URL.
-   * - Type d'URL pour le paramètre
-     - Détermine si le paramètre est transmis sous forme de slug (URL explicite)
-       ou de paramètre GET (à partir de MM 2.4) - :ref:`voir SEO
-       <rst_cookbook_tips_seo_filter-url>`
-
-Réglages du widget frontend
-----------------------------
-
-Identiques aux réglages de la règle de filtre :ref:`component_filter_checkbox`
-– les mêmes options (paramètre d'URL, mode, template, etc.) sont disponibles.
+   * - Autoriser le remplacement
+     - Un paramètre d'URL peut désactiver la règle de filtre (par ex. pour les liens d'aperçu).
+   * - Ne pas utiliser le filtre dans l'aperçu frontend
+     - La règle de filtre est ignorée lorsqu'un utilisateur backend utilise l'aperçu frontend de Contao.
 
 
 Attributs compatibles

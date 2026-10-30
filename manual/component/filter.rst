@@ -54,14 +54,15 @@ Types de règles de filtre
 * **Condition OU (OR)** (core) : |br|
   conteneur pour d'autres règles de filtre avec combinaison OU ; option pour n'exécuter que la
   première règle (case à cocher « S'arrêter après la première correspondance »)
-* **État de la case à cocher** (filter_checkbox) : |br|
-  vérifie qu'une valeur d'attribut vaut 1 ; (anciennement « Statut de publication ») ; template
-  propre mm_filteritem_checkbox(.html5)
-* **État de la case à cocher traduite** (filter_checkbox) : |br|
+* **État de la case à cocher** (attribute_checkbox) : |br|
+  vérifie qu'une valeur d'attribut vaut 1 ; (anciennement « Statut de publication ») ; la règle pour « uniquement les
+  items publiés », sans widget frontend
+* **État de la case à cocher traduite** (attribute_translatedcheckbox) : |br|
   vérifie qu'une valeur d'attribut traduite vaut 1 ; (anciennement « Statut de publication
-  traduit ») ; template propre mm_filteritem_checkbox(.html5)
+  traduit ») ; sans widget frontend
 * **Oui / Non** (filter_checkbox) : |br|
-  sélection Oui/Non, par ex. sous forme de boutons radio
+  sélection Oui/Non pour les visiteurs, par ex. sous forme de boutons radio ; un widget qui ne filtre qu'une fois le
+  choix fait ; template propre mm_filteritem_checkbox(.html5)
 * **Valeur de/à pour un champ** (filter_fromto) : |br|
   sélection de/à pour les valeurs d'un attribut
 * **Valeur de/à pour un champ de date** (filter_fromto) : |br|
